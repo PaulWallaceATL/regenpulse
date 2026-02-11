@@ -345,7 +345,9 @@ function CameraRig() {
         },
         "<"
       );
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   useFrame(() => {
