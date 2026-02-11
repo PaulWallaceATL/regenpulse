@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import {
   Boxes,
   DollarSign,
@@ -15,6 +18,9 @@ const metrics: { label: string; icon: LucideIcon }[] = [
 ];
 
 export function HeroSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section className="relative flex min-h-screen flex-col bg-background">
       {/* Content block */}
@@ -27,9 +33,9 @@ export function HeroSection() {
           Regeneration, Recovery & Performance
         </p>
 
-        {/* 3D department visualization */}
+        {/* 3D department visualization - mount after client hydration to avoid GSAP/Three init errors */}
         <div className="mt-12 h-[280px] w-full max-w-4xl md:h-[320px]">
-          <DepartmentVisualization />
+          {mounted ? <DepartmentVisualization /> : <div className="h-full w-full bg-muted/30 rounded-lg" />}
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -69,6 +69,7 @@ export function useScrollAnimation<T extends HTMLElement>(
     scrollTrigger: triggerConfig = {},
     disabled = false,
   } = config;
+  const ctxRef = useRef<ReturnType<typeof gsap.context> | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -85,31 +86,44 @@ export function useScrollAnimation<T extends HTMLElement>(
         ? triggerOptions.end
         : undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el,
-        { ...from },
-        {
-          ...to,
-          ease: to.ease ?? DEFAULT_TO.ease,
-          scrollTrigger: {
-            trigger: el,
-            start,
-            ...(end !== undefined && { end }),
-            scrub: triggerOptions.scrub,
-            markers: triggerOptions.markers,
-            toggleActions:
-              typeof triggerOptions.toggleActions === "string"
-                ? triggerOptions.toggleActions
-                : undefined,
-            once: triggerOptions.once ?? true,
-          },
-        }
-      );
-    }, ref);
+    // Defer so DOM/scroll container is ready (avoids ScrollTrigger init .split(undefined))
+    const id = window.requestAnimationFrame(() => {
+      const element = ref.current;
+      if (!element || disabled) return;
+      try {
+        ctxRef.current = gsap.context(() => {
+          gsap.fromTo(
+            element,
+            { ...from },
+            {
+              ...to,
+              ease: to.ease ?? DEFAULT_TO.ease,
+              scrollTrigger: {
+                trigger: element,
+                start,
+                ...(end !== undefined && { end }),
+                scrub: triggerOptions.scrub,
+                markers: triggerOptions.markers,
+                toggleActions:
+                  typeof triggerOptions.toggleActions === "string"
+                    ? triggerOptions.toggleActions
+                    : undefined,
+                once: triggerOptions.once ?? true,
+              },
+            }
+          );
+        }, ref);
+      } catch {
+        // ScrollTrigger can throw if DOM/scroll not ready; no-op so app doesn't crash
+      }
+    });
 
     return () => {
-      ctx.revert();
+      cancelAnimationFrame(id);
+      if (ctxRef.current) {
+        ctxRef.current.revert();
+        ctxRef.current = null;
+      }
     };
     // Config (from, to, scrollTrigger) is intentionally not in deps; pass stable refs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
