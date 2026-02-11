@@ -86,13 +86,14 @@ export async function GET() {
 
     const departments = (data as DepartmentRow[]) ?? [];
     const buffer = await buildPdfBuffer(departments);
+    const body = new Uint8Array(buffer);
 
-    return new NextResponse(buffer, {
+    return new NextResponse(body, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": 'attachment; filename="lease-manifest.pdf"',
-        "Content-Length": String(buffer.length),
+        "Content-Length": String(body.length),
       },
     });
   } catch (e) {
