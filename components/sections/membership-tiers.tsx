@@ -62,16 +62,16 @@ function TierCard({
 
 export function MembershipTiers() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [tiers, setTiers] = useState<MembershipTier[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   useScrollAnimation(sectionRef, {
     from: { opacity: 0, y: 24 },
     to: { opacity: 1, y: 0, duration: 0.6 },
     scrollTrigger: { start: "top 88%" },
     disabled: loading || !!error,
   });
-
-  const [tiers, setTiers] = useState<MembershipTier[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchTiers() {
