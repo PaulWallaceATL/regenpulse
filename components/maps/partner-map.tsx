@@ -63,9 +63,10 @@ export function PartnerMap() {
       .then((res) => res.json())
       .then((topology: { objects: { states: object } }) => {
         const states = topology.objects.states;
-        const collection = topojson.feature(topology as never, states as never) as {
-          features: StateFeature[];
-        };
+        const collection = topojson.feature(
+          topology as never,
+          states as never
+        ) as unknown as { features: StateFeature[] };
         const list = generateClinics(collection.features);
         setClinics(list);
       })
