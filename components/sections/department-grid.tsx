@@ -259,6 +259,10 @@ function DepartmentDetailDialog({
 
 export function DepartmentGrid() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [departments, setDepartments] = useState<Department[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   useScrollAnimation(sectionRef, {
     from: { opacity: 0, y: 20 },
     to: { opacity: 1, y: 0, duration: 0.5 },
@@ -266,9 +270,6 @@ export function DepartmentGrid() {
     disabled: loading || !!error,
   });
 
-  const [departments, setDepartments] = useState<Department[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [detailDepartment, setDetailDepartment] = useState<Department | null>(
     null
   );
