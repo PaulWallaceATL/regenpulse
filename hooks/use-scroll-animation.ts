@@ -75,6 +75,15 @@ export function useScrollAnimation<T extends HTMLElement>(
     if (!el || disabled) return;
 
     const triggerOptions = { ...DEFAULT_SCROLL_TRIGGER, ...triggerConfig };
+    // GSAP ScrollTrigger parses start/end with .split() - never pass undefined
+    const start =
+      typeof triggerOptions.start === "string"
+        ? triggerOptions.start
+        : DEFAULT_SCROLL_TRIGGER.start;
+    const end =
+      typeof triggerOptions.end === "string"
+        ? triggerOptions.end
+        : undefined;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -82,13 +91,17 @@ export function useScrollAnimation<T extends HTMLElement>(
         { ...from },
         {
           ...to,
+          ease: to.ease ?? DEFAULT_TO.ease,
           scrollTrigger: {
             trigger: el,
-            start: triggerOptions.start,
-            end: triggerOptions.end,
+            start,
+            ...(end !== undefined && { end }),
             scrub: triggerOptions.scrub,
             markers: triggerOptions.markers,
-            toggleActions: triggerOptions.toggleActions,
+            toggleActions:
+              typeof triggerOptions.toggleActions === "string"
+                ? triggerOptions.toggleActions
+                : undefined,
             once: triggerOptions.once ?? true,
           },
         }
