@@ -1,0 +1,15 @@
+---
+description: Use only shadcn/ui and React for UI; add components on demand
+globs: app/**/*.tsx, components/**/*.tsx
+alwaysApply: false
+---
+
+# UI components
+
+- Use **only** shadcn/ui and React for UI. Do not introduce other UI libraries or custom design systems.
+- **Add shadcn components on demand**: when a page or feature needs a component (button, card, dialog, etc.), add it with:
+  ```bash
+  npx shadcn@latest add <component-name>
+  ```
+- Components live in `components/ui/`. Use the `cn()` helper from `@/lib/utils` for class names.
+- Prefer existing shadcn components over building from scratch. Add new ones as we build each page.
