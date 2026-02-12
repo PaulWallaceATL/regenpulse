@@ -24,7 +24,7 @@ export function HeroSection() {
   return (
     <section className="relative flex min-h-screen flex-col bg-background">
       {/* Content block */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-20 text-center">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center sm:px-6">
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           RegenPulse Total Wellness & Regenerative Center
         </h1>
@@ -41,7 +41,7 @@ export function HeroSection() {
 
       {/* Metric bar */}
       <div className="border-t border-border bg-muted/20">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-8 px-6 py-5 sm:gap-12">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4 px-4 py-5 sm:gap-8 sm:px-6 md:gap-12">
           {metrics.map(({ label, icon: Icon }) => (
             <div
               key={label}
@@ -50,7 +50,7 @@ export function HeroSection() {
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
-              <span className="text-sm font-medium sm:text-base">{label}</span>
+              <span className="text-xs font-medium sm:text-sm md:text-base">{label}</span>
             </div>
           ))}
         </div>

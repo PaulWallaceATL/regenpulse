@@ -21,7 +21,7 @@ import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <HeroSection />
       <section id="membership-benefits" aria-label="Membership benefits">
         <MembershipBenefits />

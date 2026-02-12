@@ -10,17 +10,16 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -37,12 +36,14 @@ const NAV_LINKS = [
 
 export function MainNav() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
     "idle"
   );
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const closeMenu = () => setMenuOpen(false);
 
   const handleOpenChange = (open: boolean) => {
     setDialogOpen(open);
@@ -76,99 +77,73 @@ export function MainNav() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container mx-auto flex h-14 items-center justify-between gap-4 px-4">
-          <Link href="/" className="shrink-0 font-semibold text-foreground">
+        <nav className="container mx-auto flex h-14 items-center justify-between gap-4 px-4 sm:px-6">
+          <Link
+            href="/"
+            className="shrink-0 text-lg font-semibold text-foreground sm:text-xl"
+          >
             RegenPulse
           </Link>
 
-          {/* Desktop: NavigationMenu */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="gap-1">
-              {NAV_LINKS.map((link) => (
-                <NavigationMenuItem key={link.href}>
-                  <Link href={link.href} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "h-9 px-3 text-sm"
-                      )}
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          {/* Desktop: CTA buttons */}
-          <div className="hidden md:flex shrink-0 items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setDialogOpen(true)}
-            >
-              Request Franchise
-            </Button>
-            <Button size="sm" asChild>
-              <Link href="/login">Login / Sign Up</Link>
-            </Button>
-          </div>
-
-          {/* Mobile: menu button */}
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setDialogOpen(true)}
-            >
-              Request Franchise
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9"
-              onClick={() => setMobileMenuOpen((o) => !o)}
-              aria-expanded={mobileMenuOpen}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 shrink-0"
+            onClick={() => setMenuOpen(true)}
+            aria-expanded={menuOpen}
+            aria-label="Open menu"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
         </nav>
+      </header>
 
-        {/* Mobile menu dropdown */}
-        {mobileMenuOpen && (
-          <div className="border-t border-border bg-background px-4 py-4 md:hidden">
-            <ul className="flex flex-col gap-1">
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetContent
+          side="right"
+          className="flex w-full flex-col border-l border-border bg-background p-0 sm:max-w-sm"
+        >
+          <SheetHeader className="border-b border-border px-6 py-4 text-left">
+            <SheetTitle className="text-lg font-semibold">Menu</SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-1 flex-col overflow-y-auto">
+            <ul className="flex flex-col gap-0 py-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block px-6 py-3 text-sm font-medium text-foreground",
+                      "hover:bg-accent hover:text-accent-foreground",
+                      "transition-colors"
+                    )}
+                    onClick={closeMenu}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li className="mt-2 border-t border-border pt-2">
-                <Link
-                  href="/login"
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-primary hover:bg-accent"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+            </ul>
+            <div className="mt-auto border-t border-border px-6 py-4">
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => {
+                  closeMenu();
+                  setDialogOpen(true);
+                }}
+              >
+                Request Franchise
+              </Button>
+              <Button className="mt-3 w-full" asChild>
+                <Link href="/login" onClick={closeMenu}>
                   Login / Sign Up
                 </Link>
-              </li>
-            </ul>
+              </Button>
+            </div>
           </div>
-        )}
-      </header>
+        </SheetContent>
+      </Sheet>
 
       <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
         <DialogContent className="sm:max-w-md">

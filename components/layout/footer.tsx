@@ -65,7 +65,7 @@ const currentYear = new Date().getFullYear();
 export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/10">
-      <div className="container mx-auto px-4 py-12 md:py-16">
+      <div className="container mx-auto px-4 py-10 sm:px-6 sm:py-12 md:py-16">
         {/* Link groups */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {LINK_GROUPS.map((group) => (
