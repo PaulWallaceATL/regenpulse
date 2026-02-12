@@ -18,7 +18,7 @@ export function PageHero({ title, description }: PageHeroProps) {
       <div className="absolute inset-0 z-0">
         {mounted ? (
           <Aurora
-            colorStops={["#5227FF", "#7cff67", "#5227FF"]}
+            colorStops={["#E0F4FF", "#8FC9E8", "#5B9BD5"]}
             amplitude={1.0}
             blend={0.5}
             className="h-full w-full"

@@ -27,7 +27,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         {mounted ? (
           <LiquidEther
-            colors={["#5227FF", "#0ea5e9", "#10b981"]}
+            colors={["#E0F4FF", "#8FC9E8", "#5B9BD5"]}
             resolution={0.5}
             className="h-full w-full"
           />
