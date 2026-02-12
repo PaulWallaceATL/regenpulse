@@ -8,7 +8,7 @@ import {
   Percent,
   type LucideIcon,
 } from "lucide-react";
-import { DepartmentVisualization } from "@/components/canvas/department-visualization";
+import LiquidEther from "@/components/canvas/liquid-ether";
 
 const metrics: { label: string; icon: LucideIcon }[] = [
   { label: "89 Units Installed", icon: Boxes },
@@ -33,9 +33,17 @@ export function HeroSection() {
           Regeneration, Recovery & Performance
         </p>
 
-        {/* 3D department visualization - mount after client hydration to avoid GSAP/Three init errors */}
-        <div className="mt-12 h-[280px] w-full max-w-4xl md:h-[320px]">
-          {mounted ? <DepartmentVisualization /> : <div className="h-full w-full bg-muted/30 rounded-lg" />}
+        {/* Liquid ether effect - mount after client hydration */}
+        <div className="mt-12 h-[280px] w-full max-w-4xl md:h-[320px] rounded-lg overflow-hidden">
+          {mounted ? (
+            <LiquidEther
+              colors={["#5227FF", "#0ea5e9", "#10b981"]}
+              resolution={0.6}
+              className="rounded-lg"
+            />
+          ) : (
+            <div className="h-full w-full bg-muted/30 rounded-lg" />
+          )}
         </div>
       </div>
 
