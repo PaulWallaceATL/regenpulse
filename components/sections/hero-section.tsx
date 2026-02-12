@@ -9,6 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import LiquidEther from "@/components/canvas/liquid-ether";
+import { GradientText } from "@/components/ui/gradient-text";
 
 const metrics: { label: string; icon: LucideIcon }[] = [
   { label: "89 Units Installed", icon: Boxes },
@@ -41,10 +42,15 @@ export function HeroSection() {
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           RegenPulse Total Wellness & Regenerative Center
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          15 Clinical & Lifestyle Departments | Integrated Technology for
-          Regeneration, Recovery & Performance
-        </p>
+        <div className="mt-6 max-w-2xl text-lg sm:text-xl">
+          <GradientText
+            colors={["#7EC8E3", "#5B9BD5", "#8FC9E8"]}
+            className="text-center"
+          >
+            15 Clinical & Lifestyle Departments | Integrated Technology for
+            Regeneration, Recovery & Performance
+          </GradientText>
+        </div>
       </div>
 
       {/* Metric bar */}
