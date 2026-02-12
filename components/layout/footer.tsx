@@ -12,34 +12,30 @@ const LINK_GROUPS = [
     title: "Discover",
     links: [
       { href: "/", label: "Home" },
-      { href: "/#departments", label: "Departments" },
-      { href: "/#memberships", label: "Memberships" },
-      { href: "/#partner-network", label: "Partner Network" },
+      { href: "/departments", label: "Departments" },
+      { href: "/memberships", label: "Memberships" },
+      { href: "/partner-network", label: "Partner Network" },
     ],
   },
   {
     title: "For Business",
     links: [
-      { href: "/#corporate-wellness", label: "Corporate Wellness" },
-      { href: "/#regen-university", label: "Regen University" },
-      { href: "/#creator-portal", label: "Creator Portal" },
+      { href: "/corporate-wellness", label: "Corporate Wellness" },
+      { href: "/regen-university", label: "Regen University" },
     ],
   },
   {
     title: "Programs & Shop",
     links: [
-      { href: "/#regen-fresh", label: "Regen Fresh" },
-      { href: "/#regen-mart", label: "Regen Mart" },
-      { href: "/#cost-plus-rx", label: "Cost Plus RX" },
-      { href: "/#regen-credit", label: "Regen Credit" },
+      { href: "/regen-fresh", label: "Regen Fresh" },
+      { href: "/regen-mart", label: "Regen Mart" },
+      { href: "/cost-plus-rx", label: "Cost Plus RX" },
     ],
   },
   {
     title: "Company",
     links: [
-      { href: "/#gamification", label: "Gamification" },
-      { href: "/#weekend-warrior", label: "Wellness Refunds" },
-      { href: "/request-deck", label: "Request Franchise Deck" },
+      { href: "/", label: "Request Franchise Deck" },
     ],
   },
 ] as const;

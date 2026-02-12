@@ -24,14 +24,14 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/#departments", label: "Departments" },
-  { href: "/#memberships", label: "Memberships" },
-  { href: "/#partner-network", label: "Partner Network" },
-  { href: "/#corporate-wellness", label: "Corporate Wellness" },
-  { href: "/#regen-university", label: "Regen University" },
-  { href: "/#regen-mart", label: "Regen Mart" },
-  { href: "/#regen-fresh", label: "Regen Fresh" },
-  { href: "/#cost-plus-rx", label: "Cost Plus RX" },
+  { href: "/departments", label: "Departments" },
+  { href: "/memberships", label: "Memberships" },
+  { href: "/partner-network", label: "Partner Network" },
+  { href: "/corporate-wellness", label: "Corporate Wellness" },
+  { href: "/regen-university", label: "Regen University" },
+  { href: "/regen-mart", label: "Regen Mart" },
+  { href: "/regen-fresh", label: "Regen Fresh" },
+  { href: "/cost-plus-rx", label: "Cost Plus RX" },
 ] as const;
 
 export function MainNav() {

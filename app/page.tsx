@@ -1,59 +1,41 @@
+import Link from "next/link";
 import { HeroSection } from "@/components/sections/hero-section";
-import { MembershipBenefits } from "@/components/sections/membership-benefits";
-import { WeekendWarrior } from "@/components/sections/weekend-warrior";
-import { GamifiedHealth } from "@/components/sections/gamified-health";
-import { RegenCredit } from "@/components/sections/regen-credit";
-import { CreatorPortal } from "@/components/sections/creator-portal";
-import { CreatorFeatures } from "@/components/sections/creator-features";
-import { GamificationIntro } from "@/components/sections/gamification-intro";
-import { GamificationRewards } from "@/components/sections/gamification-rewards";
-import { CorporateWellness } from "@/components/sections/corporate-wellness";
-import { RegenUniversity } from "@/components/sections/regen-university";
-import { RegenFresh } from "@/components/sections/regen-fresh";
-import { RegenMart } from "@/components/sections/regen-mart";
-import { CostPlusRx } from "@/components/sections/cost-plus-rx";
-import { DepartmentGrid } from "@/components/sections/department-grid";
-import { MembershipTiers } from "@/components/sections/membership-tiers";
-import { PartnerNetwork } from "@/components/sections/partner-network";
-import { PaymentOptions } from "@/components/sections/payment-options";
 import { TrustFooter } from "@/components/sections/trust-footer";
 import { Footer } from "@/components/layout/footer";
+import { Button } from "@/components/ui/button";
+
+const EXPLORE_LINKS = [
+  { href: "/departments", label: "Departments" },
+  { href: "/memberships", label: "Memberships" },
+  { href: "/partner-network", label: "Partner Network" },
+  { href: "/corporate-wellness", label: "Corporate Wellness" },
+  { href: "/regen-university", label: "Regen University" },
+  { href: "/regen-mart", label: "Regen Mart" },
+  { href: "/regen-fresh", label: "Regen Fresh" },
+  { href: "/cost-plus-rx", label: "Cost Plus RX" },
+] as const;
 
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <HeroSection />
-      <section id="membership-benefits" aria-label="Membership benefits">
-        <MembershipBenefits />
+      <section className="border-t border-border bg-muted/10">
+        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Explore RegenPulse
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
+            Dive into our departments, memberships, programs, and more.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {EXPLORE_LINKS.map((link) => (
+              <Button key={link.href} variant="outline" size="sm" asChild>
+                <Link href={link.href}>{link.label}</Link>
+              </Button>
+            ))}
+          </div>
+        </div>
       </section>
-      <WeekendWarrior />
-      <GamifiedHealth />
-      <RegenCredit />
-      <CreatorPortal />
-      <CreatorFeatures />
-      <GamificationIntro />
-      <GamificationRewards />
-      <section id="corporate-wellness" aria-label="Corporate wellness">
-        <CorporateWellness />
-      </section>
-      <section id="regen-university" aria-label="Regen University">
-        <RegenUniversity />
-      </section>
-      <RegenFresh />
-      <section id="regen-mart" aria-label="Regen Mart">
-        <RegenMart />
-      </section>
-      <CostPlusRx />
-      <section id="departments" aria-label="Departments">
-        <DepartmentGrid />
-      </section>
-      <section id="memberships" aria-label="Membership tiers">
-        <MembershipTiers />
-      </section>
-      <section id="partner-network" aria-label="Partner network">
-        <PartnerNetwork />
-      </section>
-      <PaymentOptions />
       <TrustFooter />
       <Footer />
     </div>
