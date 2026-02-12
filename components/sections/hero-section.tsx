@@ -22,7 +22,20 @@ export function HeroSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative flex min-h-screen flex-col bg-background">
+    <section className="relative flex min-h-screen flex-col overflow-hidden">
+      {/* Full-bleed liquid ether background */}
+      <div className="absolute inset-0 z-0">
+        {mounted ? (
+          <LiquidEther
+            colors={["#5227FF", "#0ea5e9", "#10b981"]}
+            resolution={0.5}
+            className="h-full w-full"
+          />
+        ) : (
+          <div className="h-full w-full bg-muted/30" />
+        )}
+      </div>
+
       {/* Content block */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center sm:px-6">
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
@@ -32,19 +45,6 @@ export function HeroSection() {
           15 Clinical & Lifestyle Departments | Integrated Technology for
           Regeneration, Recovery & Performance
         </p>
-
-        {/* Liquid ether effect - mount after client hydration */}
-        <div className="mt-12 h-[280px] w-full max-w-4xl md:h-[320px] rounded-lg overflow-hidden">
-          {mounted ? (
-            <LiquidEther
-              colors={["#5227FF", "#0ea5e9", "#10b981"]}
-              resolution={0.6}
-              className="rounded-lg"
-            />
-          ) : (
-            <div className="h-full w-full bg-muted/30 rounded-lg" />
-          )}
-        </div>
       </div>
 
       {/* Metric bar */}
