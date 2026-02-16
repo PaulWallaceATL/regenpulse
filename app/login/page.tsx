@@ -47,12 +47,18 @@ function LoginForm() {
         .select("user_type")
         .eq("id", authData.user.id)
         .single();
-      const userType = profileError ? null : profile?.user_type ?? null;
+      if (profileError) {
+        setError(profileError.message || "Could not load profile. Check that the users table and RLS are set up.");
+        setLoading(false);
+        return;
+      }
+      const userType = profile?.user_type ?? null;
       const path = redirectTo && !redirectTo.startsWith("/login") ? redirectTo : getRedirectPathForUserType(userType);
       router.push(path);
       router.refresh();
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setError(message);
     } finally {
       setLoading(false);
     }
