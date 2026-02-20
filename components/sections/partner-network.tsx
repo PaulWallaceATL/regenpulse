@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   CalendarCheck,
   ShieldCheck,
@@ -9,9 +9,19 @@ import {
   Building2,
   UserCheck,
   Zap,
+  ExternalLink,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { supabase } from "@/lib/supabase/client";
+
+type Partner = {
+  id: string;
+  name: string;
+  category: string;
+  url: string;
+  sort_order: number | null;
+};
 
 const STEPS = [
   {
@@ -59,11 +69,29 @@ const BENEFITS_REGENPULSE = [
 
 export function PartnerNetwork() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [partners, setPartners] = useState<Partner[]>([]);
+  const [partnersLoading, setPartnersLoading] = useState(true);
+
   useScrollAnimation(sectionRef, {
     from: { opacity: 0, y: 20 },
     to: { opacity: 1, y: 0, duration: 0.5 },
     scrollTrigger: { start: "top 85%" },
   });
+
+  useEffect(() => {
+    async function fetchPartners() {
+      try {
+        const { data, error } = await supabase
+          .from("partners")
+          .select("id, name, category, url, sort_order")
+          .order("sort_order", { nullsFirst: false });
+        if (!error) setPartners((data ?? []) as Partner[]);
+      } finally {
+        setPartnersLoading(false);
+      }
+    }
+    fetchPartners();
+  }, []);
 
   return (
     <section ref={sectionRef} className="border-t border-border bg-background">
@@ -153,6 +181,48 @@ export function PartnerNetwork() {
             </CardContent>
           </Card>
         </div>
+
+        {(partners.length > 0 || partnersLoading) && (
+          <>
+            <h3 className="mt-14 text-center text-xl font-semibold text-foreground">
+              Our Partners
+            </h3>
+            <p className="mt-2 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
+              Technology and vendor partners powering the RegenPulse network.
+            </p>
+            {partnersLoading ? (
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Loading partners…
+              </p>
+            ) : (
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {partners.map((partner) => (
+                  <Card key={partner.id} className="overflow-hidden">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-base font-semibold">
+                        {partner.name}
+                      </CardTitle>
+                      <p className="text-sm text-muted-foreground">
+                        {partner.category}
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <a
+                        href={partner.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                      >
+                        Visit site
+                        <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                      </a>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
     </section>
   );

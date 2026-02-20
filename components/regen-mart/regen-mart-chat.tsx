@@ -56,7 +56,7 @@ export function RegenMartChat() {
       <Button
         type="button"
         size="icon"
-        className="fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full shadow-lg"
+        className="fixed bottom-6 left-6 z-50 h-12 w-12 rounded-full shadow-lg"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open chat"}
       >
@@ -69,7 +69,7 @@ export function RegenMartChat() {
 
       {open && (
         <div
-          className="fixed bottom-24 right-6 z-50 flex w-full max-w-sm flex-col overflow-hidden rounded-lg border border-border bg-background shadow-xl"
+          className="fixed bottom-24 left-6 z-50 flex w-full max-w-sm flex-col overflow-hidden rounded-lg border border-border bg-background shadow-xl"
           role="dialog"
           aria-label="Regen Mart assistant"
         >
