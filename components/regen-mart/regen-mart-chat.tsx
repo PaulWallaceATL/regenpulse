@@ -119,7 +119,7 @@ export function RegenMartChat() {
                 <p className="text-sm text-red-600">{error}</p>
                 <p className="text-xs text-gray-500">
                   {error.includes("Too many requests") || error.includes("429")
-                    ? "Our AI provider is rate-limiting. Wait a minute and try again."
+                    ? "OpenAI is rate-limiting this key. If you just added a new key in Vercel, redeploy the site so it’s used. Free-tier keys have low limits (e.g. 3 req/min)—wait a minute or check usage at platform.openai.com."
                     : "You can try again in a moment."}
                 </p>
                 <Button
