@@ -8,7 +8,7 @@ import {
   Percent,
   type LucideIcon,
 } from "lucide-react";
-import RisingLines from "@/components/canvas/rising-lines";
+import LiquidEther from "@/components/canvas/liquid-ether";
 import { GradientText } from "@/components/ui/gradient-text";
 
 const metrics: { label: string; icon: LucideIcon }[] = [
@@ -18,43 +18,33 @@ const metrics: { label: string; icon: LucideIcon }[] = [
   { label: "65% Profit Margin", icon: Percent },
 ];
 
-const BRAND_COLORS = {
-  primary: "#5B9BD5",
-  light: "#8FC9E8",
-  accent: "#7EC8E3",
-};
-
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative flex min-h-screen flex-col overflow-hidden bg-[#0c1628]">
-      {/* Rising lines background – brand colors */}
+    <section className="relative flex min-h-screen flex-col overflow-hidden">
+      {/* Full-bleed liquid ether background (homepage only) */}
       <div className="absolute inset-0 z-0">
         {mounted ? (
-          <RisingLines
-            color={BRAND_COLORS.primary}
-            horizonColor={BRAND_COLORS.primary}
-            haloColor={BRAND_COLORS.light}
-            riseSpeed={0.08}
-            flowSpeed={0.15}
-            brightness={1.2}
+          <LiquidEther
+            colors={["#E0F4FF", "#8FC9E8", "#5B9BD5"]}
+            resolution={0.5}
             className="h-full w-full"
           />
         ) : (
-          <div className="h-full w-full bg-[#0c1628]" />
+          <div className="h-full w-full bg-muted/30" />
         )}
       </div>
 
       {/* Content block */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center sm:px-6">
-        <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           RegenPulse Total Wellness & Regenerative Center
         </h1>
         <div className="mt-6 max-w-2xl text-lg sm:text-xl">
           <GradientText
-            colors={[BRAND_COLORS.accent, BRAND_COLORS.primary, BRAND_COLORS.light]}
+            colors={["#7EC8E3", "#5B9BD5", "#8FC9E8"]}
             className="text-center"
           >
             15 Clinical & Lifestyle Departments | Integrated Technology for
@@ -64,14 +54,14 @@ export function HeroSection() {
       </div>
 
       {/* Metric bar */}
-      <div className="relative z-10 border-t border-white/20 bg-black/20">
+      <div className="border-t border-border bg-muted/20">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4 px-4 py-5 sm:gap-8 sm:px-6 md:gap-12">
           {metrics.map(({ label, icon: Icon }) => (
             <div
               key={label}
-              className="flex items-center gap-3 text-white"
+              className="flex items-center gap-3 text-foreground"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/15 text-[#8FC9E8]">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
               <span className="text-xs font-medium sm:text-sm md:text-base">{label}</span>
