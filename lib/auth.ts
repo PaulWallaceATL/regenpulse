@@ -17,6 +17,8 @@ export function getRedirectPathForUserType(userType: string | null): string {
       return "/creator/dashboard";
     case "admin":
       return "/admin/dashboard";
+    case "member":
+      return "/member/dashboard";
     case "patient":
     default:
       return "/book";

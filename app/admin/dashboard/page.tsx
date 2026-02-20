@@ -2,16 +2,8 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { getUserWithRole, getRedirectPathForUserType } from "@/lib/auth-server";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { AdminDashboardClient } from "./admin-dashboard-client";
 
 export default async function AdminDashboardPage() {
   const user = await getUserWithRole();
@@ -22,12 +14,39 @@ export default async function AdminDashboardPage() {
 
   const supabase = await createClient();
 
-  const { data: users } = await supabase
-    .from("users")
-    .select("id, full_name, email, user_type, created_at")
-    .order("created_at", { ascending: false });
-
-  const list = users ?? [];
+  const [
+    { data: users },
+    { data: departments },
+    { data: tiers },
+    { data: partners },
+    { data: inquiries },
+    { data: products },
+  ] = await Promise.all([
+    supabase
+      .from("users")
+      .select("id, full_name, email, user_type, created_at")
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("departments")
+      .select("id, title, subheader, monthly_cost, feature_caption")
+      .order("title"),
+    supabase
+      .from("membership_tiers")
+      .select("id, tier_name, price_monthly, access_details, best_for")
+      .order("price_monthly"),
+    supabase
+      .from("manufacturers")
+      .select("id, name, slug")
+      .order("name"),
+    supabase
+      .from("leads")
+      .select("id, name, email, message, created_at")
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("products")
+      .select("id, name, sku, price, category, brand")
+      .order("name"),
+  ]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -38,48 +57,14 @@ export default async function AdminDashboardPage() {
         </Button>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Users</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Manage all platform users.
-          </p>
-        </CardHeader>
-        <CardContent>
-          {list.length === 0 ? (
-            <p className="py-12 text-center text-muted-foreground">
-              No users yet.
-            </p>
-          ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Full name</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Created</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {list.map((u) => (
-                  <TableRow key={u.id}>
-                    <TableCell className="font-medium">
-                      {u.email ?? "—"}
-                    </TableCell>
-                    <TableCell>{u.full_name ?? "—"}</TableCell>
-                    <TableCell>{u.user_type ?? "—"}</TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {u.created_at
-                        ? new Date(u.created_at).toLocaleDateString()
-                        : "—"}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
-        </CardContent>
-      </Card>
+      <AdminDashboardClient
+        users={users ?? []}
+        departments={departments ?? []}
+        tiers={tiers ?? []}
+        partners={partners ?? []}
+        inquiries={inquiries ?? []}
+        products={products ?? []}
+      />
     </div>
   );
 }
