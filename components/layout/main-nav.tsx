@@ -153,9 +153,14 @@ export function MainNav() {
               >
                 Request Franchise
               </Button>
+              <Button variant="outline" className="w-full" asChild>
+                <Link href="/signup" onClick={closeMenu}>
+                  Sign up
+                </Link>
+              </Button>
               <Button className="mt-3 w-full" asChild>
                 <Link href="/login" onClick={closeMenu}>
-                  Login / Sign Up
+                  Login
                 </Link>
               </Button>
             </div>

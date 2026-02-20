@@ -21,11 +21,22 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") ?? undefined;
+  const message = searchParams.get("message");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const TEST_LOGINS = [
+    { role: "User", email: "user@regenpulse.com", password: "password123" },
+    { role: "Member", email: "member@regenpulse.com", password: "password123" },
+    { role: "Partner", email: "partner@oxyhealth.com", password: "password123" },
+    { role: "Admin", email: "admin@regenpulse.com", password: "password123" },
+    { role: "Clinic", email: "info@louisvillerecovery.com", password: "password123" },
+    { role: "Creator", email: "sarah@recoverycoach.com", password: "password123" },
+    { role: "Patient", email: "patient@test.com", password: "password123" },
+  ] as const;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -42,17 +53,29 @@ function LoginForm() {
         setError("Login failed. Please try again.");
         return;
       }
-      const { data: profile, error: profileError } = await supabase
+      let profile: { user_type: string | null } | null = null;
+      const { data: profileData, error: profileError } = await supabase
         .from("users")
         .select("user_type")
         .eq("id", authData.user.id)
         .single();
-      if (profileError) {
+      if (profileError && profileError.code !== "PGRST116") {
         setError(profileError.message || "Could not load profile. Check that the users table and RLS are set up.");
         setLoading(false);
         return;
       }
-      const userType = profile?.user_type ?? null;
+      if (profileError?.code === "PGRST116" || !profileData) {
+        await supabase.from("users").insert({
+          id: authData.user.id,
+          email: authData.user.email ?? "",
+          full_name: authData.user.user_metadata?.full_name ?? null,
+          user_type: "patient",
+        });
+        profile = { user_type: "patient" };
+      } else {
+        profile = profileData;
+      }
+      const userType = profile?.user_type ?? "patient";
       const path = redirectTo && !redirectTo.startsWith("/login") ? redirectTo : getRedirectPathForUserType(userType);
       router.push(path);
       router.refresh();
@@ -67,11 +90,16 @@ function LoginForm() {
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center px-4 py-12">
       <Card className="w-full max-w-sm">
-        <CardHeader>
+          <CardHeader>
           <CardTitle>Sign in</CardTitle>
           <CardDescription>
             Sign in to your RegenPulse account.
           </CardDescription>
+          {message && (
+            <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+              {decodeURIComponent(message)}
+            </p>
+          )}
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="grid gap-4">
@@ -108,11 +136,47 @@ function LoginForm() {
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Signing in…" : "Sign in"}
             </Button>
+            <p className="text-center text-sm text-muted-foreground">
+              Don&apos;t have an account?{" "}
+              <Link href="/signup" className="underline hover:text-foreground">
+                Sign up
+              </Link>
+            </p>
             <Button variant="link" asChild className="text-muted-foreground">
               <Link href="/">Back to home</Link>
             </Button>
           </CardFooter>
         </form>
+      </Card>
+
+      <Card className="mt-6 w-full max-w-sm border-dashed">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
+            Test logins
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Click a row to fill the form. Password for all: <code className="rounded bg-muted px-1">password123</code>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <div className="space-y-1">
+            {TEST_LOGINS.map(({ role, email: testEmail, password: testPassword }) => (
+              <button
+                key={testEmail}
+                type="button"
+                onClick={() => {
+                  setEmail(testEmail);
+                  setPassword(testPassword);
+                  setError(null);
+                }}
+                className="flex w-full items-center justify-between rounded-md border border-transparent px-3 py-2 text-left text-sm hover:border-border hover:bg-muted/50"
+              >
+                <span className="font-medium">{role}</span>
+                <span className="truncate text-muted-foreground ml-2">{testEmail}</span>
+              </button>
+            ))}
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
