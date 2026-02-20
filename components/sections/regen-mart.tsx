@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { supabase } from "@/lib/supabase/client";
+import { useCart } from "@/contexts/cart-context";
 
 export type Product = {
   id: string;
@@ -46,6 +47,7 @@ function formatRevenue(value: number | null): string {
 }
 
 export function RegenMart() {
+  const { addItem } = useCart();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -95,10 +97,47 @@ export function RegenMart() {
     fetchProducts();
   }, []);
 
+  // Static options so filters always show expected values (e.g. before seed or if DB has nulls)
+  const KNOWN_BRANDS = [
+    "Arca Aesthetics",
+    "Ammortal",
+    "CryoPhit",
+    "DEXA",
+    "HBOT Pro",
+    "HOCATT",
+    "Hyperice",
+    "Inogen",
+    "LightForce",
+    "Lympha Press",
+    "Masimo",
+    "O2 Smoothie",
+    "Olympic",
+    "PNOE",
+    "Speediance",
+    "Storz Medical",
+    "SwimEx",
+    "Symmetry",
+    "VAbody",
+  ];
+  const KNOWN_SERVICE_FLOWS = [
+    "Full Regen/Aquatic Only",
+    "Full Regen/End",
+    "Full Regen/Intake",
+    "Full Regen/Oxygen",
+    "Full Regen/Public",
+    "Full Regen/Rehab",
+    "Lounge/Public",
+    "NEW Rehab Bay",
+    "NEW Strength Bay",
+    "Neuro/Vets Branch",
+    "Recovery Bay",
+    "Retail Upsell",
+  ];
+
   const { categories, brands, serviceFlows } = useMemo(() => {
     const cat = new Set<string>();
-    const br = new Set<string>();
-    const sf = new Set<string>();
+    const br = new Set<string>(KNOWN_BRANDS);
+    const sf = new Set<string>(KNOWN_SERVICE_FLOWS);
     products.forEach((p) => {
       if (p.category) cat.add(p.category);
       if (p.brand) br.add(p.brand);
@@ -297,7 +336,20 @@ export function RegenMart() {
                 )}
               </CardContent>
               <CardFooter className="p-4 pt-0">
-                <Button variant="outline" className="w-full gap-2" size="sm">
+                <Button
+                  variant="outline"
+                  className="w-full gap-2"
+                  size="sm"
+                  onClick={() =>
+                    addItem({
+                      id: product.id,
+                      sku: product.sku,
+                      name: product.name,
+                      price: product.price,
+                      image_url: product.image_url,
+                    })
+                  }
+                >
                   <ShoppingCart className="h-4 w-4" aria-hidden />
                   Add to Cart
                 </Button>
