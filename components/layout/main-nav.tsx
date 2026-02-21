@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { useCart } from "@/contexts/cart-context";
+import type { User } from "@supabase/supabase-js";
 import {
   Dialog,
   DialogContent,
@@ -36,7 +38,9 @@ const NAV_LINKS = [
 ] as const;
 
 export function MainNav() {
+  const router = useRouter();
   const { openCart, itemCount } = useCart();
+  const [user, setUser] = useState<User | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -45,7 +49,23 @@ export function MainNav() {
   );
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    supabase.auth.getUser().then(({ data: { user: u } }) => setUser(u ?? null));
+    return () => subscription.unsubscribe();
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    closeMenu();
+    router.refresh();
+  };
 
   const handleOpenChange = (open: boolean) => {
     setDialogOpen(open);
@@ -153,16 +173,28 @@ export function MainNav() {
               >
                 Request Franchise
               </Button>
-              <Button variant="outline" className="w-full" asChild>
-                <Link href="/signup" onClick={closeMenu}>
-                  Sign up
-                </Link>
-              </Button>
-              <Button className="mt-3 w-full" asChild>
-                <Link href="/login" onClick={closeMenu}>
-                  Login
-                </Link>
-              </Button>
+              {user ? (
+                <Button
+                  variant="outline"
+                  className="mt-3 w-full"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </Button>
+              ) : (
+                <>
+                  <Button variant="outline" className="mt-3 w-full" asChild>
+                    <Link href="/signup" onClick={closeMenu}>
+                      Sign up
+                    </Link>
+                  </Button>
+                  <Button className="mt-3 w-full" asChild>
+                    <Link href="/login" onClick={closeMenu}>
+                      Login
+                    </Link>
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </SheetContent>
