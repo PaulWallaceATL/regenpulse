@@ -44,8 +44,9 @@ export async function middleware(request: NextRequest) {
   }
 
   if (request.nextUrl.pathname === LOGIN_PATH && user) {
-    // Logged-in user visiting login: redirect to dashboard (role redirect happens after login form submit)
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    const redirectTo = request.nextUrl.searchParams.get("redirect");
+    const path = redirectTo && !redirectTo.startsWith("/login") ? redirectTo : "/dashboard";
+    return NextResponse.redirect(new URL(path, request.url));
   }
 
   return response;

@@ -77,8 +77,8 @@ function LoginForm() {
       }
       const userType = profile?.user_type ?? "patient";
       const path = redirectTo && !redirectTo.startsWith("/login") ? redirectTo : getRedirectPathForUserType(userType);
-      router.push(path);
-      router.refresh();
+      // Full page navigation so the server receives the new session cookies
+      window.location.assign(path);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       setError(message);

@@ -56,7 +56,7 @@ BEGIN
     membership_tier_id = EXCLUDED.membership_tier_id;
 END $$;
 
--- Confirmation token fix for new users (avoid 500 on login)
+-- Token null fix for auth.users (avoid 500 on login)
 UPDATE auth.users SET confirmation_token = '' WHERE confirmation_token IS NULL;
 UPDATE auth.users SET recovery_token = '' WHERE recovery_token IS NULL;
 UPDATE auth.users SET email_change = '' WHERE email_change IS NULL;
