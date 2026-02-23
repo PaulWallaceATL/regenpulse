@@ -6,15 +6,15 @@ import { Footer } from "@/components/layout/footer";
 export const metadata: Metadata = {
   title: "Partner Network | RegenPulse",
   description:
-    "Our partner network of clinics and locations. Find a RegenPulse center near you.",
+    "Kentucky Desert Network strategy with Western and Eastern/Central pods, plus Louisville as future Phase 2.",
 };
 
 export default function PartnerNetworkPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <PageHero
-        title="Partner Network"
-        description="Find a RegenPulse clinic near you. Our partners deliver the same standards of care and technology."
+        title="Kentucky Desert Network"
+        description="Phase 1 focuses on rural and small-city Kentucky hubs and satellites to expand PT and home-health access. Louisville remains a future Phase 2 metro flagship."
       />
       <PartnerNetwork />
       <Footer />

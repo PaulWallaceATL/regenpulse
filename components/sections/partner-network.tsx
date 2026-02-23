@@ -2,18 +2,24 @@
 
 import { useRef, useEffect, useState } from "react";
 import {
-  CalendarCheck,
-  ShieldCheck,
-  Stethoscope,
-  FileCheck,
   Building2,
-  UserCheck,
-  Zap,
+  MapPinned,
+  Mountain,
+  Route,
   ExternalLink,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { supabase } from "@/lib/supabase/client";
+import { PartnerMap } from "@/components/maps/partner-map";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 type Partner = {
   id: string;
@@ -23,49 +29,88 @@ type Partner = {
   sort_order: number | null;
 };
 
-const STEPS = [
+const STRATEGY_PILLARS = [
   {
-    icon: CalendarCheck,
-    title: "Patient Books",
-    description: "Patient selects a partner clinic and time that works.",
+    icon: MapPinned,
+    title: "PT desert-first access",
+    description:
+      "Phase 1 prioritizes underserved Kentucky communities where PT, home-health, and mobile access gaps are greatest.",
   },
   {
-    icon: ShieldCheck,
-    title: "Insurance Match",
-    description: "We verify coverage and match the visit to the right plan.",
+    icon: Route,
+    title: "Hub-and-satellite rollout",
+    description:
+      "Owensboro and Greenville anchor Western operations, while Richmond supports Eastern and Central expansion into Appalachian counties.",
   },
   {
-    icon: Stethoscope,
-    title: "Visit & Treat",
-    description: "Patient receives care at the clinic; we handle eligibility.",
+    icon: Mountain,
+    title: "Rural Kentucky first",
+    description:
+      "The current wave focuses on rural and small-city Kentucky before larger metro markets.",
   },
-  {
-    icon: FileCheck,
-    title: "We Handle Billing",
-    description: "Claims submitted and reconciled; clinic gets paid, patient gets superbill if needed.",
-  },
-];
+] as const;
 
-const BENEFITS_CLINICS = [
-  "More booked appointments from our network",
-  "Insurance verification and eligibility handled",
-  "Streamlined billing and faster reimbursement",
-  "No extra admin burden — we integrate with your workflow",
-];
+const WESTERN_POD = [
+  {
+    location: "Owensboro",
+    role: "Western hub",
+    phase: "Phase 1",
+  },
+  {
+    location: "Greenville / Muhlenberg",
+    role: "PT desert hub",
+    phase: "Phase 1",
+  },
+  {
+    location: "Madisonville",
+    role: "Satellite",
+    phase: "Coming soon",
+  },
+  {
+    location: "Hopkinsville / Ft Campbell",
+    role: "Satellite",
+    phase: "Coming soon",
+  },
+  {
+    location: "Henderson",
+    role: "Satellite",
+    phase: "Coming soon",
+  },
+  {
+    location: "Paducah",
+    role: "Satellite / mini-hub",
+    phase: "Coming soon",
+  },
+] as const;
 
-const BENEFITS_PATIENTS = [
-  "Book at 1,200+ clinics nationwide",
-  "Know your coverage before you go",
-  "One place to manage visits and benefits",
-  "Superbills for HSA/FSA when applicable",
-];
+const EASTERN_CENTRAL_POD = [
+  {
+    location: "Richmond",
+    role: "Eastern/Central hub",
+    phase: "Phase 1b",
+  },
+  {
+    location: "Beattyville / Campton area",
+    role: "Appalachia satellite",
+    phase: "In development",
+  },
+  {
+    location: "Irvine / Clay City / Stanton area",
+    role: "Appalachia satellite",
+    phase: "In development",
+  },
+  {
+    location: "Additional micro-site (TBD)",
+    role: "Optional satellite",
+    phase: "In development",
+  },
+] as const;
 
-const BENEFITS_REGENPULSE = [
-  "Unified network quality and standards",
-  "Real-time capacity and scheduling visibility",
-  "Consistent branding and patient experience",
-  "Data and insights to grow the network",
-];
+const LOUISVILLE_PHASE_2_REASONS = [
+  "A rural-first rollout allows broader Kentucky access before metro concentration.",
+  "The current model prioritizes multiple lower-cost locations over a single metro launch.",
+  "Louisville remains a future flagship once the desert-network model is validated.",
+] as const;
 
 export function PartnerNetwork() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -97,98 +142,139 @@ export function PartnerNetwork() {
     <section ref={sectionRef} className="border-t border-border bg-background">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl max-w-4xl mx-auto">
-          1,200+ Partner Clinics Nationwide | Book Anywhere, We Handle Insurance
+          Kentucky Desert Network Strategy
         </h2>
+        <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
+          Own the deserts, not the downtowns. Phase 1 centers on rural and
+          small-city Kentucky hubs and satellites to expand PT, home-health,
+          and mobile access. Louisville is positioned as a future Phase 2
+          metro flagship.
+        </p>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((step, index) => (
-            <div
-              key={step.title}
-              className="flex flex-col items-center text-center"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <step.icon className="h-6 w-6" aria-hidden />
-              </div>
-              <p className="mt-3 text-sm font-medium text-muted-foreground">
-                Step {index + 1}
-              </p>
-              <h3 className="mt-1 font-semibold text-foreground">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {step.description}
-              </p>
-            </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {STRATEGY_PILLARS.map((pillar) => (
+            <Card key={pillar.title}>
+              <CardHeader className="pb-2">
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <pillar.icon className="h-5 w-5 text-primary" aria-hidden />
+                  {pillar.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  {pillar.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <h3 className="mt-14 text-center text-xl font-semibold text-foreground">
-          Partner Clinic Benefits Grid
-        </h3>
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          <Card>
+        <div className="mt-12">
+          <PartnerMap />
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <Card className="overflow-hidden">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Building2 className="h-5 w-5 text-primary" aria-hidden />
-                Clinics
+              <CardTitle className="text-lg">
+                Western Pod (Phase 1)
               </CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Owensboro and Greenville hubs with planned Western satellites.
+              </p>
             </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {BENEFITS_CLINICS.map((item, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <CardContent className="pt-2">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Role</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {WESTERN_POD.map((row) => (
+                    <TableRow key={row.location}>
+                      <TableCell className="font-medium">{row.location}</TableCell>
+                      <TableCell>{row.role}</TableCell>
+                      <TableCell>{row.phase}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Focus: PT deserts, home-health access, and mobile coverage
+                across Western Kentucky.
+              </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="overflow-hidden">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <UserCheck className="h-5 w-5 text-primary" aria-hidden />
-                Patients
+              <CardTitle className="text-lg">
+                Eastern/Central Pod (Phase 1b)
               </CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Richmond as the hub with Appalachian satellites in development.
+              </p>
             </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {BENEFITS_PATIENTS.map((item, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Zap className="h-5 w-5 text-primary" aria-hidden />
-                RegenPulse
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {BENEFITS_REGENPULSE.map((item, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <CardContent className="pt-2">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Role</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {EASTERN_CENTRAL_POD.map((row) => (
+                    <TableRow key={row.location}>
+                      <TableCell className="font-medium">{row.location}</TableCell>
+                      <TableCell>{row.role}</TableCell>
+                      <TableCell>{row.phase}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Focus: rural Appalachia access, home health, and mobile PT into
+                medically underserved counties.
+              </p>
             </CardContent>
           </Card>
         </div>
+
+        <Card className="mt-8 border-primary/20 bg-primary/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Building2 className="h-5 w-5 text-primary" aria-hidden />
+              Why Louisville Is Future Phase 2
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {LOUISVILLE_PHASE_2_REASONS.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                    aria-hidden
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
 
         {(partners.length > 0 || partnersLoading) && (
           <>
             <h3 className="mt-14 text-center text-xl font-semibold text-foreground">
-              Our Partners
+              Technology and Vendor Partners
             </h3>
             <p className="mt-2 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
-              Technology and vendor partners powering the RegenPulse network.
+              These partners support clinical delivery, operations, and rollout
+              consistency across the Kentucky network.
             </p>
             {partnersLoading ? (
               <p className="mt-6 text-center text-sm text-muted-foreground">
