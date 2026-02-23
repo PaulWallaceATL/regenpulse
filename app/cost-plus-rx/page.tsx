@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CostPlusRxPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Cost Plus RX"
         description="Transparent, cost-plus pharmacy. Pay what we pay, plus a small markup—no hidden fees."

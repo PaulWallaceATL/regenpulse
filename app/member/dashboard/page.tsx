@@ -31,13 +31,14 @@ export default async function MemberDashboardPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Member Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
-      </div>
+    <div className="brand-page">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight">Member Dashboard</h1>
+          <Button variant="outline" asChild>
+            <Link href="/">Back to home</Link>
+          </Button>
+        </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
@@ -64,6 +65,7 @@ export default async function MemberDashboardPage() {
             </Button>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

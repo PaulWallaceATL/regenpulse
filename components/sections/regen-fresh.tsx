@@ -87,7 +87,7 @@ const DAY_IN_LIFE = [
 
 export function RegenFresh() {
   return (
-    <section className="border-t border-border bg-muted/10">
+    <section className="brand-section">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Regen Fresh | Nutrition Delivery

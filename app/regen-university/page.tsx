@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RegenUniversityPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Regen University"
         description="Hybrid education and certification to grow your practice within the RegenPulse ecosystem."

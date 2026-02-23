@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PartnerNetworkPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Kentucky Desert Network"
         description="Phase 1 focuses on rural and small-city Kentucky hubs and satellites to expand PT and home-health access. Louisville remains a future Phase 2 metro flagship."

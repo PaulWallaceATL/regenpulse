@@ -23,7 +23,7 @@ export function HeroSection() {
       {/* Full-bleed liquid ether background (homepage only) */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
-          colors={["#E0F4FF", "#8FC9E8", "#5B9BD5"]}
+          colors={["#bdd7ec", "#7fb1d6", "#4d78b0"]}
           resolution={0.5}
           className="h-full w-full"
         />
@@ -36,7 +36,7 @@ export function HeroSection() {
         </h1>
         <div className="mt-6 max-w-2xl text-lg sm:text-xl">
           <GradientText
-            colors={["#7EC8E3", "#5B9BD5", "#8FC9E8"]}
+            colors={["#8bbfe2", "#4d78b0", "#6ca3cf"]}
             className="text-center"
           >
             Rural Kentucky first for PT, home-health, and mobile access.

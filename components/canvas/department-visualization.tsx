@@ -52,9 +52,9 @@ const BASE_POSITIONS = Array.from({ length: DEPT_COUNT }, (_, i) => {
 });
 
 const COLORS = [
-  "#64748b", "#475569", "#0ea5e9", "#06b6d4", "#10b981",
-  "#84cc16", "#eab308", "#f97316", "#ef4444", "#ec4899",
-  "#8b5cf6", "#6366f1", "#14b8a6", "#22c55e", "#a855f7",
+  "#35588a", "#42699f", "#4d78b0", "#5f8fbe", "#6ca3cf",
+  "#7fb6da", "#8ec4e1", "#a6d2e9", "#5f8bbd", "#3f6497",
+  "#547eb0", "#6a9cc8", "#82b5da", "#4a71a7", "#97c9e9",
 ];
 
 const SCALE_HOVER = new THREE.Vector3(1.15, 1.15, 1.15);
@@ -288,6 +288,7 @@ function ShapeDriftAndRotation({
         base.y + Math.cos(t * 0.28 + phase * 1.1) * 0.12,
         base.z + Math.sin(t * 0.22 + phase * 0.7) * 0.18
       );
+      // eslint-disable-next-line react-hooks/immutability
       group.rotation.y += delta * (0.15 + (i % 3) * 0.08);
       group.rotation.x += delta * 0.04;
       group.rotation.z += delta * (0.02 + (i % 2) * 0.03);
@@ -413,7 +414,7 @@ function Scene() {
 
 export function DepartmentVisualization() {
   return (
-    <div className="h-full w-full min-h-[280px] rounded-xl overflow-hidden bg-black/5">
+    <div className="h-full w-full min-h-[280px] overflow-hidden rounded-xl bg-[color:var(--surface-2)]">
       <Canvas
         camera={{ position: [0, 0, 10], fov: 50 }}
         shadows

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CorporateWellnessPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Corporate Wellness"
         description="Employer programs that boost engagement, reduce healthcare costs, and integrate with your benefits in 30 days."

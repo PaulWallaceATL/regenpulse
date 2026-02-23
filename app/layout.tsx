@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google";
 import { MainNav } from "@/components/layout/main-nav";
 import { PageTransition } from "@/components/layout/page-transition";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const brandSans = Manrope({
+  variable: "--font-brand-sans",
   subsets: ["latin"],
 });
 
@@ -15,10 +15,63 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const brandDisplay = Playfair_Display({
+  variable: "--font-brand-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+});
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://regenpulse.com";
+
 export const metadata: Metadata = {
-  title: "RegenPulse | Total Wellness & Regenerative Center",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "RegenPulse | Regenerative Wellness, Elevated",
+    template: "%s | RegenPulse",
+  },
   description:
-    "15 Clinical & Lifestyle Departments. Integrated technology for regeneration, recovery & performance.",
+    "Regenerative wellness and performance experiences across clinical care, programs, and partner network services.",
+  keywords: [
+    "RegenPulse",
+    "regenerative wellness",
+    "performance recovery",
+    "corporate wellness",
+    "membership health programs",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+    shortcut: "/icon",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "RegenPulse",
+    title: "RegenPulse | Regenerative Wellness, Elevated",
+    description:
+      "Clinical and lifestyle programs for recovery, longevity, and performance with a premium member experience.",
+    url: siteUrl,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "RegenPulse social preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RegenPulse | Regenerative Wellness, Elevated",
+    description:
+      "Clinical and lifestyle programs for recovery, longevity, and performance with a premium member experience.",
+    images: ["/twitter-image"],
+    creator: "@regenpulse",
+    site: "@regenpulse",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased overflow-x-hidden`}
+        className={`${brandSans.variable} ${brandDisplay.variable} ${geistMono.variable} min-h-screen overflow-x-hidden antialiased`}
       >
         <Providers>
           <MainNav />

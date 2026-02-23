@@ -28,7 +28,7 @@ interface GradientTextProps {
 export function GradientText({
   children,
   className = "",
-  colors = ["#7EC8E3", "#5B9BD5", "#8FC9E8"],
+  colors = ["#8bbfe2", "#4d78b0", "#6ca3cf"],
   animationSpeed = 8,
   showBorder = false,
   direction = "horizontal",
@@ -129,7 +129,7 @@ export function GradientText({
           style={{ ...gradientStyle, backgroundPosition }}
         >
           <div
-            className="absolute bg-black rounded-[1.25rem] z-[-1]"
+            className="absolute z-[-1] rounded-[1.25rem] bg-background"
             style={{
               width: "calc(100% - 2px)",
               height: "calc(100% - 2px)",

@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,6 @@ import {
 import { getRedirectPathForUserType } from "@/lib/auth";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") ?? undefined;
   const message = searchParams.get("message");
@@ -88,8 +87,8 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-sm">
+    <div className="brand-page flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-12">
+      <Card className="w-full max-w-sm border-primary/10">
           <CardHeader>
           <CardTitle>Sign in</CardTitle>
           <CardDescription>
@@ -149,7 +148,7 @@ function LoginForm() {
         </form>
       </Card>
 
-      <Card className="mt-6 w-full max-w-sm border-dashed">
+      <Card className="mt-6 w-full max-w-sm border-dashed border-primary/25 bg-secondary/40">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Test logins
@@ -184,7 +183,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center">Loading…</div>}>
+    <Suspense fallback={<div className="brand-page flex min-h-[calc(100vh-4rem)] items-center justify-center">Loading…</div>}>
       <LoginForm />
     </Suspense>
   );

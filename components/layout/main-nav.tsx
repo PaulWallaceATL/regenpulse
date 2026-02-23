@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Menu, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/brand/brand-mark";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -99,13 +100,18 @@ export function MainNav() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container mx-auto flex h-14 items-center justify-between gap-4 px-4 sm:px-6">
-          <Link
-            href="/"
-            className="shrink-0 text-lg font-semibold text-foreground sm:text-xl"
-          >
-            RegenPulse
+        <nav className="container mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
+          <Link href="/" className="shrink-0">
+            <BrandMark />
           </Link>
+
+          <div className="hidden lg:flex items-center gap-1 rounded-full border border-border bg-secondary/45 px-1 py-1">
+            {NAV_LINKS.slice(1, 6).map((link) => (
+              <Button key={link.href} variant="ghost" size="sm" asChild className="rounded-full text-xs text-muted-foreground hover:text-foreground">
+                <Link href={link.href}>{link.label}</Link>
+              </Button>
+            ))}
+          </div>
 
           <div className="flex items-center gap-1">
             <Button
@@ -142,7 +148,9 @@ export function MainNav() {
           className="flex w-full flex-col border-l border-border bg-background p-0 sm:max-w-sm"
         >
           <SheetHeader className="border-b border-border px-6 py-4 text-left">
-            <SheetTitle className="text-lg font-semibold">Menu</SheetTitle>
+            <SheetTitle className="text-lg font-semibold">
+              <BrandMark compact />
+            </SheetTitle>
           </SheetHeader>
           <div className="flex flex-1 flex-col overflow-y-auto">
             <ul className="flex flex-col gap-0 py-2">

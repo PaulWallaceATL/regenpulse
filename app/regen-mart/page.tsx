@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RegenMartPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Regen Mart"
         description="Supplements, recovery gear, and wellness products to support your journey."

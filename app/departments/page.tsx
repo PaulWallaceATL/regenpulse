@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function DepartmentsPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Departments"
         description="15 clinical and lifestyle departments for regeneration, recovery, and performance."

@@ -87,7 +87,7 @@ export function CorporateWellness() {
   });
 
   return (
-    <section ref={sectionRef} className="border-t border-border bg-muted/10">
+    <section ref={sectionRef} className="brand-section">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Corporate Wellness | 3-Year Contracts | $50K – $500K Per Company

@@ -12,21 +12,23 @@ export default async function CreatorDashboardPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Creator Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
+    <div className="brand-page">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight">Creator Dashboard</h1>
+          <Button variant="outline" asChild>
+            <Link href="/">Back to home</Link>
+          </Button>
+        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Content</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">No content yet.</p>
+          </CardContent>
+        </Card>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Content</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">No content yet.</p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

@@ -37,14 +37,14 @@ const NETWORK_CARDS = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <HeroSection />
-      <section className="border-t border-border bg-background">
+      <section className="brand-section">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="brand-title text-center">
             Kentucky Rollout At A Glance
           </h2>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-muted-foreground">
+          <p className="brand-subtitle mx-auto mt-3 max-w-3xl text-center">
             Own the deserts, not the downtowns. Our current launch strategy
             prioritizes PT deserts, home-health access, and rural Kentucky
             coverage before metro expansion.
@@ -74,12 +74,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="border-t border-border bg-muted/10">
+      <section className="brand-section">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="brand-title text-center">
             Explore RegenPulse
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
+          <p className="brand-subtitle mx-auto mt-3 max-w-2xl text-center">
             Explore programs, services, and platform experiences supporting the
             Kentucky rollout.
           </p>

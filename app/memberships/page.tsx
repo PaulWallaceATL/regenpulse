@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function MembershipsPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="brand-page">
       <PageHero
         title="Memberships"
         description="Choose the plan that fits your wellness goals and unlock full access to our departments and programs."

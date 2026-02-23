@@ -39,13 +39,14 @@ export default async function ClinicDashboardPage() {
   const bookedDates = list.map((b) => new Date(b.scheduled_at).toDateString());
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Clinic Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
-      </div>
+    <div className="brand-page">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight">Clinic Dashboard</h1>
+          <Button variant="outline" asChild>
+            <Link href="/">Back to home</Link>
+          </Button>
+        </div>
 
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card>
@@ -71,6 +72,7 @@ export default async function ClinicDashboardPage() {
           />
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

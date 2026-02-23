@@ -10,17 +10,20 @@ type PageHeroProps = {
 };
 
 const BRAND_COLORS = {
-  primary: "#5B9BD5",
-  light: "#8FC9E8",
-  accent: "#7EC8E3",
+  primary: "#4d78b0",
+  light: "#8bbfe2",
+  accent: "#6ca3cf",
 };
 
 export function PageHero({ title, description }: PageHeroProps) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
-    <section className="relative min-h-[45vh] overflow-hidden border-b border-border bg-[#0c1628] sm:min-h-[50vh] md:min-h-[55vh]">
+    <section className="relative min-h-[45vh] overflow-hidden border-b border-border bg-[linear-gradient(145deg,var(--brand-navy),color-mix(in_oklch,var(--brand-blue)_70%,var(--brand-navy)))] sm:min-h-[50vh] md:min-h-[55vh]">
       {/* Rising lines background – brand colors */}
       <div className="absolute inset-0 z-0">
         {mounted ? (
@@ -34,7 +37,7 @@ export function PageHero({ title, description }: PageHeroProps) {
             className="h-full w-full"
           />
         ) : (
-          <div className="h-full w-full bg-[#0c1628]" />
+          <div className="h-full w-full bg-[var(--brand-navy)]" />
         )}
       </div>
 

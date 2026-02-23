@@ -139,7 +139,7 @@ export function PartnerNetwork() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="border-t border-border bg-background">
+    <section ref={sectionRef} className="brand-section">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl max-w-4xl mx-auto">
           Kentucky Desert Network Strategy

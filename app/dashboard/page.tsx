@@ -44,13 +44,14 @@ export default async function ManufacturerDashboardPage() {
     transactionsRes.data?.reduce((sum, t) => sum + Number(t.amount ?? 0), 0) ?? 0;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Manufacturer Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
-      </div>
+    <div className="brand-page">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight">Manufacturer Dashboard</h1>
+          <Button variant="outline" asChild>
+            <Link href="/">Back to home</Link>
+          </Button>
+        </div>
 
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card>
@@ -87,43 +88,44 @@ export default async function ManufacturerDashboardPage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Clinics</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {clinics.length === 0 ? (
-            <p className="py-12 text-center text-muted-foreground">
-              No clinics have been added yet.
-            </p>
-          ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>City</TableHead>
-                  <TableHead>State</TableHead>
-                  <TableHead>ZIP</TableHead>
-                  <TableHead>Address</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {clinics.map((c) => (
-                  <TableRow key={c.id}>
-                    <TableCell className="font-medium">{c.name}</TableCell>
-                    <TableCell>{c.city ?? "—"}</TableCell>
-                    <TableCell>{c.state ?? "—"}</TableCell>
-                    <TableCell>{c.zip ?? "—"}</TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {c.address ?? "—"}
-                    </TableCell>
+        <Card>
+          <CardHeader>
+            <CardTitle>Clinics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {clinics.length === 0 ? (
+              <p className="py-12 text-center text-muted-foreground">
+                No clinics have been added yet.
+              </p>
+            ) : (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>City</TableHead>
+                    <TableHead>State</TableHead>
+                    <TableHead>ZIP</TableHead>
+                    <TableHead>Address</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
-        </CardContent>
-      </Card>
+                </TableHeader>
+                <TableBody>
+                  {clinics.map((c) => (
+                    <TableRow key={c.id}>
+                      <TableCell className="font-medium">{c.name}</TableCell>
+                      <TableCell>{c.city ?? "—"}</TableCell>
+                      <TableCell>{c.state ?? "—"}</TableCell>
+                      <TableCell>{c.zip ?? "—"}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {c.address ?? "—"}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

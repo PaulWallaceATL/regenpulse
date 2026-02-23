@@ -49,22 +49,24 @@ export default async function AdminDashboardPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Admin Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
-      </div>
+    <div className="brand-page">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight">Admin Dashboard</h1>
+          <Button variant="outline" asChild>
+            <Link href="/">Back to home</Link>
+          </Button>
+        </div>
 
-      <AdminDashboardClient
-        users={users ?? []}
-        departments={departments ?? []}
-        tiers={tiers ?? []}
-        partners={partners ?? []}
-        inquiries={inquiries ?? []}
-        products={products ?? []}
-      />
+        <AdminDashboardClient
+          users={users ?? []}
+          departments={departments ?? []}
+          tiers={tiers ?? []}
+          partners={partners ?? []}
+          inquiries={inquiries ?? []}
+          products={products ?? []}
+        />
+      </div>
     </div>
   );
 }
