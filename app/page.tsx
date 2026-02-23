@@ -3,8 +3,6 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { TrustFooter } from "@/components/sections/trust-footer";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Building2, MapPinned, Mountain } from "lucide-react";
 
 const EXPLORE_LINKS = [
   { href: "/departments", label: "Departments" },
@@ -17,22 +15,11 @@ const EXPLORE_LINKS = [
   { href: "/cost-plus-rx", label: "Cost Plus RX" },
 ] as const;
 
-const NETWORK_CARDS = [
-  {
-    title: "Western Pod (Phase 1)",
-    icon: MapPinned,
-    copy: "Owensboro and Greenville lead launch operations, with Madisonville, Hopkinsville/Ft Campbell, Henderson, and Paducah staged as satellite markets.",
-  },
-  {
-    title: "Eastern/Central Pod (Phase 1b)",
-    icon: Mountain,
-    copy: "Richmond serves as the operations and tech hub for Appalachian expansion, with satellite towns in development.",
-  },
-  {
-    title: "Louisville (Future Phase 2)",
-    icon: Building2,
-    copy: "Louisville is now positioned as a later metro flagship after the rural network model is validated.",
-  },
+const KEY_VALUE_PROPS = [
+  { value: "4", label: "Markets Across Kentucky + Appalachia" },
+  { value: "10,000+", label: "Patients Served" },
+  { value: "92%", label: "Patient-Reported Mobility Improvement" },
+  { value: "For Everyone", label: "Care That Supports Daily Life At Any Age" },
 ] as const;
 
 export default function Home() {
@@ -42,26 +29,21 @@ export default function Home() {
       <section className="brand-section">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
           <h2 className="brand-title text-center">
-            Kentucky Rollout At A Glance
+            Impact At A Glance
           </h2>
           <p className="brand-subtitle mx-auto mt-3 max-w-3xl text-center">
-            Own the deserts, not the downtowns. Our current launch strategy
-            prioritizes PT deserts, home-health access, and rural Kentucky
-            coverage before metro expansion.
+            Better mobility, better outcomes, and stronger communities through
+            accessible regenerative care.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {NETWORK_CARDS.map(({ title, icon: Icon, copy }) => (
-              <Card key={title}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden />
-                    {title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{copy}</p>
-                </CardContent>
-              </Card>
+          <div className="mt-8 grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">
+            {KEY_VALUE_PROPS.map(({ value, label }) => (
+              <div
+                key={label}
+                className="rounded-lg border border-border/50 bg-background/70 px-4 py-4"
+              >
+                <p className="text-2xl font-bold text-primary sm:text-3xl">{value}</p>
+                <p className="mt-1 text-xs font-medium text-foreground sm:text-sm">{label}</p>
+              </div>
             ))}
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
