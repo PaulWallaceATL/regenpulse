@@ -21,7 +21,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Download } from "lucide-react";
-import { FacilityRender, PLACEHOLDER_FACILITY_GLB } from "@/components/canvas/facility-render";
 
 export type SortOption = "department" | "function" | "monthly_cost";
 
@@ -174,12 +173,11 @@ function EquipmentDetailDialog({
           </section>
 
           <section>
-            <h4 className="mb-2 text-sm font-semibold">3D model</h4>
-            <div className="rounded-lg border border-border overflow-hidden">
-              <FacilityRender
-                modelUrl={PLACEHOLDER_FACILITY_GLB}
-                className="h-[200px] w-full"
-              />
+            <h4 className="mb-2 text-sm font-semibold">Equipment visual</h4>
+            <div className="flex aspect-video items-center justify-center rounded-lg border border-border bg-muted/30">
+              <span className="text-xs text-muted-foreground">
+                Visual preview coming soon
+              </span>
             </div>
           </section>
         </div>
@@ -245,11 +243,10 @@ function DepartmentDetailDialog({
               </ul>
             </div>
           )}
-          <div className="rounded-lg border border-border overflow-hidden">
-            <FacilityRender
-              modelUrl={PLACEHOLDER_FACILITY_GLB}
-              className="h-[200px] w-full"
-            />
+          <div className="flex aspect-video items-center justify-center rounded-lg border border-border bg-muted/30">
+            <span className="text-xs text-muted-foreground">
+              Visual preview coming soon
+            </span>
           </div>
         </div>
       </DialogContent>
