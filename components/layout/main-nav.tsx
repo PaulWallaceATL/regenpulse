@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { useCart } from "@/contexts/cart-context";
 import type { User } from "@supabase/supabase-js";
@@ -40,6 +40,7 @@ const NAV_LINKS = [
 
 export function MainNav() {
   const router = useRouter();
+  const pathname = usePathname();
   const { openCart, itemCount } = useCart();
   const [user, setUser] = useState<User | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -49,6 +50,7 @@ export function MainNav() {
     "idle"
   );
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const {
@@ -99,15 +101,40 @@ export function MainNav() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header
+        className={cn(
+          "sticky top-0 z-40 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60",
+          isHomePage
+            ? "border-white/20 bg-black/25 text-white supports-[backdrop-filter]:bg-black/25"
+            : "border-border bg-background/95"
+        )}
+      >
         <nav className="container mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
           <Link href="/" className="shrink-0">
-            <BrandMark />
+            <BrandMark wordmarkClassName={isHomePage ? "text-white" : undefined} />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1 rounded-full border border-border bg-secondary/45 px-1 py-1">
+          <div
+            className={cn(
+              "hidden items-center gap-1 rounded-full border px-1 py-1 lg:flex",
+              isHomePage
+                ? "border-white/20 bg-black/35"
+                : "border-border bg-secondary/45"
+            )}
+          >
             {NAV_LINKS.slice(1, 6).map((link) => (
-              <Button key={link.href} variant="ghost" size="sm" asChild className="rounded-full text-xs text-muted-foreground hover:text-foreground">
+              <Button
+                key={link.href}
+                variant="ghost"
+                size="sm"
+                asChild
+                className={cn(
+                  "rounded-full text-xs",
+                  isHomePage
+                    ? "text-slate-100 hover:bg-white/10 hover:text-white"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             ))}
@@ -117,7 +144,10 @@ export function MainNav() {
             <Button
               variant="ghost"
               size="icon"
-              className="relative h-9 w-9 shrink-0"
+              className={cn(
+                "relative h-9 w-9 shrink-0",
+                isHomePage && "text-white hover:bg-white/10 hover:text-white"
+              )}
               onClick={openCart}
               aria-label={`Open cart${itemCount > 0 ? `, ${itemCount} items` : ""}`}
             >
@@ -131,7 +161,10 @@ export function MainNav() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-9 w-9 shrink-0"
+              className={cn(
+                "h-9 w-9 shrink-0",
+                isHomePage && "text-white hover:bg-white/10 hover:text-white"
+              )}
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-label="Open menu"
