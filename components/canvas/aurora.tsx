@@ -167,8 +167,10 @@ export default function Aurora(props: AuroraProps) {
     });
 
     function resize() {
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
+      const host = ctnDom.current;
+      if (!host) return;
+      const width = host.offsetWidth;
+      const height = host.offsetHeight;
       renderer.setSize(width, height);
       program.uniforms.uResolution.value = [width, height];
     }
