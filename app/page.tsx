@@ -1,19 +1,7 @@
-import Link from "next/link";
 import { HeroSection } from "@/components/sections/hero-section";
+import { ExploreFeaturesSection } from "@/components/sections/explore-features";
 import { TrustFooter } from "@/components/sections/trust-footer";
 import { Footer } from "@/components/layout/footer";
-import { Button } from "@/components/ui/button";
-
-const EXPLORE_LINKS = [
-  { href: "/departments", label: "Departments" },
-  { href: "/memberships", label: "Memberships" },
-  { href: "/partner-network", label: "Partner Network" },
-  { href: "/corporate-wellness", label: "Corporate Wellness" },
-  { href: "/regen-university", label: "Regen University" },
-  { href: "/regen-mart", label: "Regen Mart" },
-  { href: "/regen-fresh", label: "Regen Fresh" },
-  { href: "/cost-plus-rx", label: "Cost Plus RX" },
-] as const;
 
 const KEY_VALUE_PROPS = [
   { value: "4", label: "Markets Across Kentucky + Appalachia" },
@@ -46,34 +34,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild>
-              <Link href="/partner-network">View Kentucky Network Plan</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/departments">Browse Departments</Link>
-            </Button>
-          </div>
         </div>
       </section>
-      <section className="brand-section">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="brand-title text-center">
-            Explore RegenPulse
-          </h2>
-          <p className="brand-subtitle mx-auto mt-3 max-w-2xl text-center">
-            Explore programs, services, and platform experiences supporting the
-            Kentucky rollout.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            {EXPLORE_LINKS.map((link) => (
-              <Button key={link.href} variant="outline" size="sm" asChild>
-                <Link href={link.href}>{link.label}</Link>
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ExploreFeaturesSection />
       <TrustFooter />
       <Footer />
     </div>
