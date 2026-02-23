@@ -23,11 +23,7 @@ export function HeroSection() {
           aria-hidden
         >
           <source
-            src="/videos/kentucky-sunset-hero.mov"
-            type="video/quicktime"
-          />
-          <source
-            src="https://cdn.coverr.co/videos/coverr-stretching-before-workout-1579/1080p.mp4"
+            src="/videos/kentucky-sunset-hero.mp4"
             type="video/mp4"
           />
         </video>
