@@ -27,6 +27,10 @@ type MenuItem = {
   href: string;
 };
 
+type PrimaryLink =
+  | { label: string; key: string }
+  | { label: string; href: string };
+
 export default function Navigation2() {
   const { openCart, itemCount } = useCart();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -99,7 +103,7 @@ export default function Navigation2() {
     [],
   );
 
-  const primaryLinks = useMemo(
+  const primaryLinks = useMemo<PrimaryLink[]>(
     () => [
       { label: "Explore", key: "Explore" },
       { label: "Memberships", key: "Memberships" },
