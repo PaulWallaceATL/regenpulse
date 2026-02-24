@@ -11,7 +11,7 @@ const SOLUTIONS_ITEMS = [
   {
     label: "University",
     href: "/regen-university",
-    description: "Hybrid education and certification for the RegenPulse ecosystem.",
+    description: "Partner with athletics and university wellness to serve campuses.",
     icon: GraduationCap,
   },
   {

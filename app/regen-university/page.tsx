@@ -1,28 +1,26 @@
 import type { Metadata } from "next";
 import { SolutionsVideoHero } from "@/components/solutions/SolutionsVideoHero";
-import { RegenUniversity } from "@/components/sections/regen-university";
+import { UniversityCampusSection } from "@/components/solutions/UniversityCampusSection";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Regen University | RegenPulse",
+  title: "University | RegenPulse",
   description:
-    "Hybrid education and certification for the RegenPulse ecosystem and regenerative wellness.",
+    "Partner with athletics programs and university wellness systems to bring RegenPulse services to campuses—student-athletes, students, faculty, and staff.",
 };
 
 export default function RegenUniversityPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
       <SolutionsVideoHero
-        badge="Regen University"
-        title="Hybrid education and certification for the RegenPulse ecosystem."
-        subtitle="Grow your practice with certification tracks, partner networks, and equipment pathways—from fundamentals to train-the-trainer."
-        primaryCta={{ label: "Explore Programs", href: "/contact" }}
-        secondaryCta={{ label: "View Tracks", scrollId: "regen-university-content" }}
-        footnote="Fundamentals to Enterprise • Equipment bundles • Partner eligibility"
+        badge="University"
+        title="Partner with athletics programs and university wellness systems."
+        subtitle="Bring RegenPulse to your campus—recovery and performance for athletes, wellness for students and staff, and integration with campus rec and health services."
+        primaryCta={{ label: "Partner with us", href: "/contact" }}
+        secondaryCta={{ label: "Our partnerships", scrollId: "regen-university-content" }}
+        footnote="Athletics • Campus wellness • Student & employee health"
       />
-      <div id="regen-university-content">
-        <RegenUniversity />
-      </div>
+      <UniversityCampusSection />
       <Footer />
     </div>
   );
