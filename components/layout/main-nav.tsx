@@ -28,8 +28,8 @@ import { BrandMark } from "@/components/brand/brand-mark";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/departments", label: "Services" },
-  { href: "/memberships", label: "Memberships" },
+  { href: "/departments", label: "Memberships" },
+  { href: "/memberships", label: "How It Works" },
   { href: "/partner-network", label: "Partner Network" },
   { href: "/corporate-wellness", label: "Corporate Wellness" },
   { href: "/regen-university", label: "Regen University" },

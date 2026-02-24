@@ -35,7 +35,7 @@ export function DepartmentsVideoHero() {
       {/* Content: centered on mobile, left-aligned on desktop */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center md:items-start md:pl-12 md:pr-12 md:text-left lg:pl-16 lg:pr-16 xl:pl-24">
         <p className="mb-4 inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm">
-          Services
+          Memberships
         </p>
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-6xl">
           Regeneration, Recovery, and Performance — Built for Real Life.
