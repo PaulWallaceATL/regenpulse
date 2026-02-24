@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google";
-import { MainNav } from "@/components/layout/main-nav";
+import Navigation2 from "@/components/navigation/navigation-2";
 import { PageTransition } from "@/components/layout/page-transition";
 import { Providers } from "@/components/providers";
 import "./globals.css";
@@ -85,7 +85,7 @@ export default function RootLayout({
         className={`${brandSans.variable} ${brandDisplay.variable} ${geistMono.variable} min-h-screen overflow-x-hidden antialiased`}
       >
         <Providers>
-          <MainNav />
+          <Navigation2 />
           <PageTransition>{children}</PageTransition>
         </Providers>
       </body>
