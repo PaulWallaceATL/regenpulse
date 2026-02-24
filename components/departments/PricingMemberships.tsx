@@ -28,7 +28,7 @@ export default function PricingMemberships() {
     () => [
       {
         name: "Essential",
-        price: { monthly: 149, annual: 119 },
+        price: { monthly: 1800, annual: 1500 },
         description:
           "Core access to start your wellness journey — everything you need, nothing you don't.",
         features: [
@@ -44,7 +44,7 @@ export default function PricingMemberships() {
       },
       {
         name: "Performance",
-        price: { monthly: 249, annual: 199 },
+        price: { monthly: 2500, annual: 2100 },
         description:
           "Built for members focused on fitness and recovery — priority access and real accountability.",
         features: [
@@ -61,7 +61,7 @@ export default function PricingMemberships() {
       },
       {
         name: "Concierge",
-        price: { monthly: 399, annual: 319 },
+        price: { monthly: 3200, annual: 2700 },
         description:
           "Premium, concierge-style care for members who want white-glove support and maximum access.",
         features: [
@@ -230,9 +230,10 @@ export default function PricingMemberships() {
               <div className="relative z-10 mb-3 flex items-baseline gap-2">
                 <span className="text-4xl font-medium tracking-tight text-neutral-900 dark:text-white">
                   $
-                  {billingCycle === "monthly"
+                  {(billingCycle === "monthly"
                     ? plan.price.monthly
-                    : plan.price.annual}
+                    : plan.price.annual
+                  ).toLocaleString()}
                 </span>
                 <span className="text-sm text-neutral-500 dark:text-neutral-400">
                   /mo
