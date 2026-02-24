@@ -9,7 +9,7 @@ const metrics = [
 
 export function HeroSection() {
   return (
-    <section className="relative -mt-[5.5rem] flex min-h-screen flex-col overflow-hidden pt-[5.5rem]">
+    <section className="relative flex min-h-screen flex-col overflow-hidden pt-20">
       {/* Full-bleed wellness video background */}
       <div className="absolute inset-0 z-0">
         <video

@@ -18,8 +18,8 @@ export default function Navigation2() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-transparent px-3 py-3 sm:px-6">
-      <div className="mx-auto max-w-[1200px] bg-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-transparent px-3 py-3 sm:px-6 pointer-events-none">
+      <div className="pointer-events-auto mx-auto max-w-[1200px] bg-transparent">
         <div className="relative rounded-full border border-neutral-200/60 dark:border-neutral-800/60 bg-white/70 dark:bg-neutral-950/55 backdrop-blur-xl shadow-sm">
           <div className="flex items-center justify-between px-4 py-3 sm:px-6">
             {/* Logo */}
@@ -142,6 +142,6 @@ export default function Navigation2() {
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

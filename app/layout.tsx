@@ -85,8 +85,8 @@ export default function RootLayout({
         className={`${brandSans.variable} ${brandDisplay.variable} ${geistMono.variable} min-h-screen overflow-x-hidden antialiased`}
       >
         <Providers>
-          <Navigation2 />
           <PageTransition>{children}</PageTransition>
+          <Navigation2 />
         </Providers>
       </body>
     </html>

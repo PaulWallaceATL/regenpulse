@@ -12,7 +12,7 @@ function scrollToMemberships() {
 
 export function DepartmentsVideoHero() {
   return (
-    <section className="relative -mt-[5.5rem] flex min-h-[100svh] flex-col overflow-hidden pt-[5.5rem]">
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-20">
       {/* Full-viewport video background — same pattern as home hero */}
       <div className="absolute inset-0 z-0">
         <video
