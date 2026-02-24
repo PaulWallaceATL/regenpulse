@@ -22,53 +22,58 @@ type Plan = {
 export default function PricingMemberships() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
 
-  // NOTE: Keep plan copy consumer-facing (benefits, outcomes, access).
+  // NOTE: Features sourced from /memberships page (membership-benefits.tsx).
+  // Prices: monthly / annual-equivalent-per-month (billed annually).
   const plans: Plan[] = useMemo(
     () => [
       {
-        name: "Essentials",
-        price: { monthly: 149, annual: 129 }, // TODO
+        name: "Essential",
+        price: { monthly: 149, annual: 119 },
         description:
-          "For staying consistent—baseline recovery and monthly check-ins to keep you progressing.",
+          "Core access to start your wellness journey — everything you need, nothing you don't.",
         features: [
-          "Monthly recovery session credits",
-          "Member-only pricing on add-ons",
-          "Foundational diagnostics add-on access",
-          "Protocol guidance & tracking",
+          "Access to all RegenPulse locations",
+          "Online booking & appointment management",
+          "Member-only pricing on select services",
+          "Insurance verification support",
+          "Monthly wellness tips & resources",
+          "Customer support via email & chat",
         ],
-        ctaLabel: "Start Essentials",
-        ctaHref: "/contact", // TODO: replace with membership checkout if it exists
+        ctaLabel: "Start Essential",
+        ctaHref: "/memberships",
       },
       {
         name: "Performance",
-        price: { monthly: 249, annual: 219 }, // TODO
+        price: { monthly: 249, annual: 199 },
         description:
-          "Our most popular plan—performance recovery, deeper insights, and the structure to make it stick.",
+          "Built for members focused on fitness and recovery — priority access and real accountability.",
         features: [
-          "More monthly modality credits",
-          "Priority booking windows",
-          "Quarterly baseline diagnostics review",
-          "Personalized protocol recommendations",
-          "Best-value member add-on pricing",
+          "Everything in Essential",
+          "Priority booking at Performance & Recovery",
+          "2 complimentary recovery assessments / year",
+          "10% discount on performance packages",
+          "Access to member-only recovery workshops",
+          "Quarterly check-ins with a wellness coach",
         ],
         popular: true,
         ctaLabel: "Join Performance",
-        ctaHref: "/contact", // TODO
+        ctaHref: "/memberships",
       },
       {
         name: "Concierge",
-        price: { monthly: 399, annual: 349 }, // TODO
+        price: { monthly: 399, annual: 319 },
         description:
-          "High-touch support for longevity-focused members who want a proactive, guided plan.",
+          "Premium, concierge-style care for members who want white-glove support and maximum access.",
         features: [
-          "Highest monthly credit allotment",
-          "Protocol concierge support",
-          "Advanced diagnostics access",
-          "VIP scheduling & priority support",
-          "Invitation-only events & partner perks",
+          "Everything in Performance",
+          "Dedicated member concierge",
+          "20% discount across all eligible services",
+          "4 complimentary premium assessments / year",
+          "Exclusive member events & seminars",
+          "Complimentary guest pass each quarter",
         ],
         ctaLabel: "Talk to Us",
-        ctaHref: "/contact",
+        ctaHref: "/memberships",
       },
     ],
     [],
@@ -91,6 +96,35 @@ export default function PricingMemberships() {
     },
   };
 
+  // Department access pricing (from Explore Departments)
+  const departments = useMemo(
+    () => [
+      {
+        name: "Diagnostics",
+        monthlyPrice: 1800,
+        highlights: ["PNOE", "DEXA", "Vitals"],
+        caption: "Assessment & screening",
+      },
+      {
+        name: "Recovery",
+        monthlyPrice: 2500,
+        highlights: ["HBOT", "Cryo", "Compression"],
+        caption: "Core recovery tech",
+      },
+      {
+        name: "Rehab & Strength",
+        monthlyPrice: 2200,
+        highlights: ["Speediance", "Storz", "Olympic"],
+        caption: "Therapeutic strength",
+      },
+    ],
+    [],
+  );
+
+  function scrollToExploreDepartments() {
+    document.getElementById("explore-departments")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <section
       id="memberships"
@@ -98,6 +132,9 @@ export default function PricingMemberships() {
     >
       <div className="mx-auto w-full max-w-[1400px] flex flex-col items-center relative z-10">
         <div className="mb-10 space-y-4 text-center">
+          <p className="inline-block rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">
+            Membership Plans
+          </p>
           <h2 className="text-4xl font-medium leading-[1.1] tracking-tight text-neutral-900 dark:text-white sm:text-6xl">
             Memberships that make consistency effortless.
           </h2>
@@ -107,7 +144,12 @@ export default function PricingMemberships() {
           </p>
         </div>
 
-        <div className="mb-12 flex items-center justify-center">
+        <div className="mb-12 flex flex-col items-center justify-center gap-3">
+          {billingCycle === "annual" && (
+            <p className="text-xs font-medium text-primary">
+              Save up to 20% with annual billing
+            </p>
+          )}
           <div className="relative flex w-60 items-center rounded-full border border-neutral-200 p-1 dark:border-neutral-800">
             <motion.div
               className="absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full shadow-sm bg-primary"
@@ -251,6 +293,52 @@ export default function PricingMemberships() {
           </Link>{" "}
           and we&apos;ll recommend a protocol based on your goals.
         </p>
+
+        {/* Department access pricing */}
+        <div className="mt-20 w-full max-w-6xl">
+          <h3 className="text-center text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
+            Department access & pricing
+          </h3>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">
+            Monthly access by department. View full equipment lists and sort by department, function, or cost below.
+          </p>
+          <motion.div
+            className="mt-10 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {departments.map((dept) => (
+              <motion.div
+                key={dept.name}
+                variants={itemVariants}
+                className="relative flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
+              >
+                <h4 className="text-xl font-medium text-neutral-900 dark:text-white">
+                  {dept.name}
+                </h4>
+                <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                  {dept.highlights.join(", ")}
+                </p>
+                <p className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+                  ${dept.monthlyPrice.toLocaleString()}
+                  <span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">/mo</span>
+                </p>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                  {dept.caption}
+                </p>
+                <button
+                  type="button"
+                  onClick={scrollToExploreDepartments}
+                  className="mt-6 w-full rounded-xl border-2 border-primary/30 bg-primary/5 py-3 text-center text-sm font-medium text-primary transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:bg-primary/10 dark:hover:bg-primary/15"
+                >
+                  View Full Equipment List
+                </button>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

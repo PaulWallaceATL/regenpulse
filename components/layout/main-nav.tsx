@@ -28,7 +28,7 @@ import { BrandMark } from "@/components/brand/brand-mark";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/departments", label: "Departments" },
+  { href: "/departments", label: "Services" },
   { href: "/memberships", label: "Memberships" },
   { href: "/partner-network", label: "Partner Network" },
   { href: "/corporate-wellness", label: "Corporate Wellness" },

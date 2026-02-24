@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const HERO_VIDEO_SRC = "/videos/kentucky-sunset-hero.mp4";
+const HERO_VIDEO_SRC = "/videos/services-hero.mov";
 const BOOKING_HREF = "/book";
 
 function scrollToMemberships() {
@@ -24,7 +24,7 @@ export function DepartmentsVideoHero() {
           className="absolute inset-0 h-full w-full object-cover"
           aria-hidden
         >
-          <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          <source src={HERO_VIDEO_SRC} type="video/quicktime" />
         </video>
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/45 to-black/60"
@@ -34,6 +34,9 @@ export function DepartmentsVideoHero() {
 
       {/* Content: centered on mobile, left-aligned on desktop */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center md:items-start md:pl-12 md:pr-12 md:text-left lg:pl-16 lg:pr-16 xl:pl-24">
+        <p className="mb-4 inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm">
+          Services
+        </p>
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-6xl">
           Regeneration, Recovery, and Performance — Built for Real Life.
         </h1>

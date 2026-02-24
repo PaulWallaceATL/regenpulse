@@ -5,9 +5,9 @@ import { DepartmentGrid } from "@/components/sections/department-grid";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Departments | RegenPulse",
+  title: "Services | RegenPulse",
   description:
-    "Explore our 15 clinical and lifestyle departments for total wellness, regeneration, and performance.",
+    "Explore our 15 clinical and lifestyle services for total wellness, regeneration, and performance.",
 };
 
 export default function DepartmentsPage() {
@@ -15,13 +15,13 @@ export default function DepartmentsPage() {
     <div className="brand-page min-h-screen overflow-x-hidden">
       <DepartmentsVideoHero />
       <PricingMemberships />
-      <section className="scroll-mt-6" aria-labelledby="explore-departments-heading">
+      <section id="explore-departments" className="scroll-mt-6" aria-labelledby="explore-departments-heading">
         <div className="container mx-auto px-4 pt-8 pb-4">
           <h2 id="explore-departments-heading" className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Explore Departments
+            Explore Services
           </h2>
           <p className="mt-2 text-muted-foreground">
-            Browse by department, function, or monthly cost. View full equipment lists for each area.
+            Browse by service, function, or monthly cost. View full equipment lists for each area.
           </p>
         </div>
         <DepartmentGrid />
