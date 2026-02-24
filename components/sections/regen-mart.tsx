@@ -175,7 +175,6 @@ export function RegenMart() {
   }, [filterCategory, filterBrand, filterServiceFlow]);
 
   // When landing with hash #product-<id>, open the page that contains that product and scroll to it
-  const searchParams = useSearchParams();
   const hasScrolledToHash = useRef(false);
   useEffect(() => {
     if (typeof window === "undefined" || hasScrolledToHash.current || filtered.length === 0) return;
