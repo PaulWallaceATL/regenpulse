@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MembershipsVideoHero } from "@/components/memberships/MembershipsVideoHero";
 import { MembershipComparison } from "@/components/memberships/MembershipComparison";
-import { MembershipTiers } from "@/components/sections/membership-tiers";
+import PricingMemberships from "@/components/departments/PricingMemberships";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function MembershipsPage() {
     <div className="brand-page">
       <MembershipsVideoHero />
       <MembershipComparison />
-      <MembershipTiers />
+      <PricingMemberships ctaHrefOverride="/contact" showDepartmentAccess={false} />
       <Footer />
     </div>
   );

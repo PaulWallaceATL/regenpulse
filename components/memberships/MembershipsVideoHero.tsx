@@ -25,7 +25,7 @@ export function MembershipsVideoHero() {
           <source src={HERO_VIDEO_SRC} type="video/mp4" />
         </video>
         <div
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent"
+          className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40"
           aria-hidden
         />
       </div>

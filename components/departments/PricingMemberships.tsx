@@ -19,7 +19,17 @@ type Plan = {
   ctaHref: string;
 };
 
-export default function PricingMemberships() {
+type PricingMembershipsProps = {
+  /** When provided (e.g. on /memberships page), all plan CTAs use this href instead of plan.ctaHref */
+  ctaHrefOverride?: string;
+  /** When false, hide the "Department access & pricing" block (e.g. on standalone memberships page) */
+  showDepartmentAccess?: boolean;
+};
+
+export default function PricingMemberships({
+  ctaHrefOverride,
+  showDepartmentAccess = true,
+}: PricingMembershipsProps = {}) {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
 
   // NOTE: Features sourced from /memberships page (membership-benefits.tsx).
@@ -40,7 +50,7 @@ export default function PricingMemberships() {
           "Customer support via email & chat",
         ],
         ctaLabel: "Start Essential",
-        ctaHref: "/memberships",
+        ctaHref: ctaHrefOverride ?? "/memberships",
       },
       {
         name: "Performance",
@@ -57,7 +67,7 @@ export default function PricingMemberships() {
         ],
         popular: true,
         ctaLabel: "Join Performance",
-        ctaHref: "/memberships",
+        ctaHref: ctaHrefOverride ?? "/memberships",
       },
       {
         name: "Concierge",
@@ -73,10 +83,10 @@ export default function PricingMemberships() {
           "Complimentary guest pass each quarter",
         ],
         ctaLabel: "Talk to Us",
-        ctaHref: "/memberships",
+        ctaHref: ctaHrefOverride ?? "/memberships",
       },
     ],
-    [],
+    [ctaHrefOverride],
   );
 
   const containerVariants = {
@@ -295,7 +305,8 @@ export default function PricingMemberships() {
           and we&apos;ll recommend a protocol based on your goals.
         </p>
 
-        {/* Department access pricing */}
+        {/* Department access pricing — hidden on standalone memberships page */}
+        {showDepartmentAccess && (
         <div className="mt-20 w-full max-w-6xl">
           <h3 className="text-center text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
             Department access & pricing
@@ -340,6 +351,7 @@ export default function PricingMemberships() {
             ))}
           </motion.div>
         </div>
+        )}
       </div>
     </section>
   );
