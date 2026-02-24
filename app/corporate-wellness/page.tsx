@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { CorporateWellnessVideoHero } from "@/components/corporate-wellness/CorporateWellnessVideoHero";
-import { CorporateWellness } from "@/components/sections/corporate-wellness";
+import { SolutionsVideoHero } from "@/components/solutions/SolutionsVideoHero";
+import { CorporateTierComparison } from "@/components/solutions/CorporateTierComparison";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
@@ -12,10 +12,15 @@ export const metadata: Metadata = {
 export default function CorporateWellnessPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
-      <CorporateWellnessVideoHero />
-      <div id="corporate-wellness-content">
-        <CorporateWellness />
-      </div>
+      <SolutionsVideoHero
+        badge="Corporate Wellness"
+        title="Employer programs that drive engagement, reduce claims, and close in 30 days."
+        subtitle="Boost participation, integrate with your benefits, and get ROI projections—with a structured rollout from audit to contract."
+        primaryCta={{ label: "Get a Proposal", href: "/contact" }}
+        secondaryCta={{ label: "View Programs", scrollId: "corporate-wellness-content" }}
+        footnote="Free wellness audit • Custom dashboards • 3-year contracts"
+      />
+      <CorporateTierComparison />
       <Footer />
     </div>
   );
