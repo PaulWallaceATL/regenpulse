@@ -5,9 +5,9 @@ import { DepartmentGrid } from "@/components/sections/department-grid";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Memberships | RegenPulse",
+  title: "Explore | RegenPulse",
   description:
-    "Explore RegenPulse membership plans and clinical wellness services for regeneration, recovery, and performance.",
+    "Explore RegenPulse departments and clinical wellness services—diagnostics, recovery, and performance programs.",
 };
 
 export default function DepartmentsPage() {

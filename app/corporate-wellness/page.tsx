@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/sections/page-hero";
+import { CorporateWellnessVideoHero } from "@/components/corporate-wellness/CorporateWellnessVideoHero";
 import { CorporateWellness } from "@/components/sections/corporate-wellness";
 import { Footer } from "@/components/layout/footer";
 
@@ -11,12 +11,11 @@ export const metadata: Metadata = {
 
 export default function CorporateWellnessPage() {
   return (
-    <div className="brand-page">
-      <PageHero
-        title="Corporate Wellness"
-        description="Employer programs that boost engagement, reduce healthcare costs, and integrate with your benefits in 30 days."
-      />
-      <CorporateWellness />
+    <div className="brand-page min-h-screen overflow-x-hidden">
+      <CorporateWellnessVideoHero />
+      <div id="corporate-wellness-content">
+        <CorporateWellness />
+      </div>
       <Footer />
     </div>
   );
