@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Image from "next/image";
-import { Package, ShoppingCart, Filter } from "lucide-react";
+import { Package, ShoppingCart, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
@@ -54,6 +54,8 @@ export function RegenMart() {
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterBrand, setFilterBrand] = useState<string>("all");
   const [filterServiceFlow, setFilterServiceFlow] = useState<string>("all");
+  const PRODUCTS_PER_PAGE = 12;
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -160,6 +162,42 @@ export function RegenMart() {
       return true;
     });
   }, [products, filterCategory, filterBrand, filterServiceFlow]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PRODUCTS_PER_PAGE));
+  const paginated = useMemo(() => {
+    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+    return filtered.slice(start, start + PRODUCTS_PER_PAGE);
+  }, [filtered, currentPage]);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filterCategory, filterBrand, filterServiceFlow]);
+
+  // When landing with hash #product-<id>, open the page that contains that product and scroll to it
+  const searchParams = useSearchParams();
+  const hasScrolledToHash = useRef(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || hasScrolledToHash.current || filtered.length === 0) return;
+    const hash = window.location.hash?.slice(1);
+    const match = hash?.startsWith("product-") ? hash.slice(8) : null;
+    if (!match) return;
+    const idx = filtered.findIndex((p) => p.id === match);
+    if (idx === -1) return;
+    hasScrolledToHash.current = true;
+    const page = Math.floor(idx / PRODUCTS_PER_PAGE) + 1;
+    setCurrentPage(page);
+  }, [filtered]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !hasScrolledToHash.current) return;
+    const hash = window.location.hash?.slice(1);
+    if (!hash?.startsWith("product-")) return;
+    const el = document.getElementById(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [paginated, currentPage]);
 
   if (loading) {
     return (
@@ -269,10 +307,11 @@ export function RegenMart() {
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((product) => (
+          {paginated.map((product) => (
             <Card
               key={product.id}
-              className="flex flex-col overflow-hidden border-border"
+              id={`product-${product.id}`}
+              className="flex flex-col overflow-hidden border-border scroll-mt-24"
             >
               <div className="aspect-square w-full bg-muted relative overflow-hidden">
                 {product.image_url ? (
@@ -364,6 +403,39 @@ export function RegenMart() {
               ? "No products yet. Run the Regen Mart SKU seed in Supabase."
               : "No products match the current filters."}
           </p>
+        )}
+
+        {filtered.length > 0 && totalPages > 1 && (
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage <= 1}
+              className="gap-1"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Previous
+            </Button>
+            <span className="text-sm text-muted-foreground">
+              Page {currentPage} of {totalPages}
+              {filtered.length > 0 && (
+                <span className="ml-1">
+                  ({filtered.length} product{filtered.length !== 1 ? "s" : ""})
+                </span>
+              )}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage >= totalPages}
+              className="gap-1"
+            >
+              Next
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
         )}
       </div>
     </section>

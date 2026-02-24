@@ -1,13 +1,38 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, X, Send, Loader2, ShoppingCart, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/contexts/cart-context";
 
-type ChatMessage = { role: "user" | "assistant"; content: string };
+type ChatProduct = {
+  id: string;
+  name: string;
+  sku: string | null;
+  price: number;
+  category: string | null;
+  brand: string | null;
+};
+
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+  products?: ChatProduct[];
+};
+
+function formatPrice(dollars: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(dollars);
+}
 
 export function RegenMartChat() {
+  const { addItem } = useCart();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -42,7 +67,11 @@ export function RegenMartChat() {
       if (!res.ok) throw new Error(data.error || "Request failed");
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message },
+        {
+          role: "assistant",
+          content: data.message,
+          products: data.products ?? [],
+        },
       ]);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
@@ -96,16 +125,66 @@ export function RegenMartChat() {
               </p>
             )}
             {messages.map((m, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "max-w-[85%] rounded-lg px-3 py-2 text-sm",
-                  m.role === "user"
-                    ? "ml-auto bg-[#5B9BD5] text-white"
-                    : "bg-gray-100 text-gray-900"
+              <div key={i} className={cn("max-w-[85%]", m.role === "user" && "ml-auto")}>
+                <div
+                  className={cn(
+                    "rounded-lg px-3 py-2 text-sm",
+                    m.role === "user"
+                      ? "bg-[#5B9BD5] text-white"
+                      : "bg-gray-100 text-gray-900"
+                  )}
+                >
+                  {m.content}
+                </div>
+                {m.role === "assistant" && m.products && m.products.length > 0 && (
+                  <div className="mt-2 space-y-2">
+                    {m.products.map((p) => (
+                      <div
+                        key={p.id}
+                        className="rounded-lg border border-gray-200 bg-white p-2 text-left shadow-sm"
+                      >
+                        <p className="font-medium text-gray-900">{p.name}</p>
+                        {(p.brand || p.category) && (
+                          <p className="text-xs text-gray-500">
+                            {[p.brand, p.category].filter(Boolean).join(" · ")}
+                          </p>
+                        )}
+                        <p className="mt-0.5 text-sm font-semibold text-gray-700">
+                          {formatPrice(p.price)}
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-8 gap-1 text-xs"
+                            asChild
+                          >
+                            <Link href={`/regen-mart#product-${p.id}`}>
+                              <ExternalLink className="h-3 w-3" />
+                              View on Mart
+                            </Link>
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="h-8 gap-1 bg-[#5B9BD5] text-xs text-white hover:bg-[#4a8ac4]"
+                            onClick={() =>
+                              addItem({
+                                id: p.id,
+                                sku: p.sku,
+                                name: p.name,
+                                price: p.price,
+                                image_url: null,
+                              })
+                            }
+                          >
+                            <ShoppingCart className="h-3 w-3" />
+                            Add to Cart
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 )}
-              >
-                {m.content}
               </div>
             ))}
             {loading && (

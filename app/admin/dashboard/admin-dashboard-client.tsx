@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -18,8 +18,12 @@ import {
   Store,
   Mail,
   Package,
+  MessageCircle,
+  Upload,
+  Trash2,
+  Loader2,
 } from "lucide-react";
-type TabId = "users" | "departments" | "tiers" | "partners" | "inquiries" | "products";
+type TabId = "users" | "departments" | "tiers" | "partners" | "inquiries" | "products" | "chatbot";
 
 type UserRow = {
   id: string;
@@ -79,12 +83,15 @@ type Props = {
 
 const TABS: { id: TabId; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: "users", label: "Users", icon: Users },
+  { id: "chatbot", label: "Chat Bot", icon: MessageCircle },
   { id: "departments", label: "Departments", icon: Building2 },
   { id: "tiers", label: "Membership Tiers", icon: CreditCard },
   { id: "partners", label: "Partners", icon: Store },
   { id: "inquiries", label: "Inquiries", icon: Mail },
   { id: "products", label: "Products", icon: Package },
 ];
+
+type ChatbotDoc = { id: string; name: string; created_at: string };
 
 export function AdminDashboardClient({
   users,
@@ -95,10 +102,70 @@ export function AdminDashboardClient({
   products,
 }: Props) {
   const [activeTab, setActiveTab] = useState<TabId>("users");
+  const [chatbotDocs, setChatbotDocs] = useState<ChatbotDoc[]>([]);
+  const [chatbotLoading, setChatbotLoading] = useState(false);
+  const [chatbotUploading, setChatbotUploading] = useState(false);
+  const [chatbotError, setChatbotError] = useState<string | null>(null);
+
+  const fetchChatbotDocs = useCallback(async () => {
+    setChatbotLoading(true);
+    setChatbotError(null);
+    try {
+      const res = await fetch("/api/admin/chatbot-documents");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to load");
+      setChatbotDocs(data.documents ?? []);
+    } catch (e) {
+      setChatbotError(e instanceof Error ? e.message : "Failed to load documents");
+    } finally {
+      setChatbotLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (activeTab === "chatbot") fetchChatbotDocs();
+  }, [activeTab, fetchChatbotDocs]);
+
+  const handleChatbotUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setChatbotUploading(true);
+    setChatbotError(null);
+    try {
+      const formData = new FormData();
+      formData.set("file", file);
+      const res = await fetch("/api/admin/chatbot-documents", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      await fetchChatbotDocs();
+      e.target.value = "";
+    } catch (err) {
+      setChatbotError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setChatbotUploading(false);
+    }
+  };
+
+  const handleChatbotDelete = async (id: string) => {
+    setChatbotError(null);
+    try {
+      const res = await fetch(`/api/admin/chatbot-documents?id=${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Delete failed");
+      setChatbotDocs((prev) => prev.filter((d) => d.id !== id));
+    } catch (err) {
+      setChatbotError(err instanceof Error ? err.message : "Delete failed");
+    }
+  };
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-2 border-b border-border pb-2">
+      <div className="flex gap-2 overflow-x-auto border-b border-border pb-2">
         {TABS.map(({ id, label, icon: Icon }) => (
           <Button
             key={id}
@@ -389,6 +456,81 @@ export function AdminDashboardClient({
               )}
             </CardContent>
           </Card>
+      )}
+
+      {activeTab === "chatbot" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Chat Bot context</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Upload .txt documents to give the Regen Mart chatbot extra context. Customers will get answers based on this content when they use the assistant.
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex flex-wrap items-center gap-3">
+              <label className="flex cursor-pointer items-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent">
+                <Upload className="h-4 w-4" />
+                Upload document
+                <input
+                  type="file"
+                  accept=".txt,text/plain"
+                  className="sr-only"
+                  disabled={chatbotUploading}
+                  onChange={handleChatbotUpload}
+                />
+              </label>
+              {chatbotUploading && (
+                <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Uploading…
+                </span>
+              )}
+            </div>
+            {chatbotError && (
+              <p className="text-sm text-destructive">{chatbotError}</p>
+            )}
+            {chatbotLoading ? (
+              <p className="text-sm text-muted-foreground">Loading documents…</p>
+            ) : chatbotDocs.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                No documents yet. Upload a .txt file to add context for the chatbot.
+              </p>
+            ) : (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Added</TableHead>
+                    <TableHead className="w-[80px]"></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {chatbotDocs.map((d) => (
+                    <TableRow key={d.id}>
+                      <TableCell className="font-medium">{d.name}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {d.created_at
+                          ? new Date(d.created_at).toLocaleDateString()
+                          : "—"}
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:text-destructive"
+                          onClick={() => handleChatbotDelete(d.id)}
+                          aria-label={`Delete ${d.name}`}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </CardContent>
+        </Card>
       )}
     </div>
   );
