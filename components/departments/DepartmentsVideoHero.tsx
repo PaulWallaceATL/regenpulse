@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const HERO_VIDEO_SRC = "/videos/services-hero.mov";
+const HERO_VIDEO_SRC = "/videos/services-hero.mp4";
 const BOOKING_HREF = "/book";
 
 function scrollToMemberships() {
@@ -24,7 +24,7 @@ export function DepartmentsVideoHero() {
           className="absolute inset-0 h-full w-full object-cover"
           aria-hidden
         >
-          <source src={HERO_VIDEO_SRC} type="video/quicktime" />
+          <source src={HERO_VIDEO_SRC} type="video/mp4" />
         </video>
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/45 to-black/60"
