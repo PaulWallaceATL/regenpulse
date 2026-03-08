@@ -26,17 +26,20 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://regenpulse.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "RegenPulse | Regenerative Wellness, Elevated",
-    template: "%s | RegenPulse",
+    default: "REAL PT & Wellness | Physical and Aquatic Therapy",
+    template: "%s | REAL PT & Wellness",
   },
   description:
-    "Regenerative wellness and performance experiences across clinical care, programs, and partner network services.",
+    "REAL PT & Wellness — physical and aquatic therapy with a clinical-grade SwimEx hydrotherapy pool. PT, aquatic therapy, and recovery services; insurance when appropriate, plus cash and membership options.",
   keywords: [
-    "RegenPulse",
-    "regenerative wellness",
-    "performance recovery",
-    "corporate wellness",
-    "membership health programs",
+    "REAL PT",
+    "physical therapy",
+    "aquatic therapy",
+    "SwimEx",
+    "hydrotherapy",
+    "recovery",
+    "wellness",
+    "membership",
   ],
   alternates: {
     canonical: "/",
@@ -49,28 +52,28 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "RegenPulse",
-    title: "RegenPulse | Regenerative Wellness, Elevated",
+    siteName: "REAL PT & Wellness",
+    title: "REAL PT & Wellness | Physical and Aquatic Therapy",
     description:
-      "Clinical and lifestyle programs for recovery, longevity, and performance with a premium member experience.",
+      "Physical and aquatic therapy with clinical-grade SwimEx hydrotherapy. PT, recovery services, insurance and cash/membership options.",
     url: siteUrl,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "RegenPulse social preview",
+        alt: "REAL PT & Wellness",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RegenPulse | Regenerative Wellness, Elevated",
+    title: "REAL PT & Wellness | Physical and Aquatic Therapy",
     description:
-      "Clinical and lifestyle programs for recovery, longevity, and performance with a premium member experience.",
+      "Physical and aquatic therapy with clinical-grade SwimEx hydrotherapy. PT, recovery services, insurance and cash/membership options.",
     images: ["/twitter-image"],
-    creator: "@regenpulse",
-    site: "@regenpulse",
+    creator: "@realptwellness",
+    site: "@realptwellness",
   },
 };
 

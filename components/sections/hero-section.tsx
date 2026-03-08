@@ -31,12 +31,11 @@ export function HeroSection() {
       {/* Content block */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-20 text-center sm:px-6">
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-          Real Care. Real Outcomes. Lives Changed.
+          REAL PT & Wellness — Physical and Aquatic Therapy
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-100/90 sm:text-xl">
-          We help people move better, feel stronger, and stay independent
-          through integrated regenerative care, mobility support, and
-          community-first health access.
+          Clinical-grade SwimEx hydrotherapy in-house. PT, aquatic therapy, and recovery
+          services—insurance when appropriate, plus cash and membership options designed to support how you move and recover.
         </p>
       </div>
 

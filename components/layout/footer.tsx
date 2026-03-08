@@ -16,11 +16,16 @@ const LINK_GROUPS = [
       { href: "/departments", label: "Departments" },
       { href: "/memberships", label: "Memberships" },
       { href: "/partner-network", label: "Partner Network" },
+      { href: "/services/aquatic-therapy", label: "Aquatic Therapy" },
+      { href: "/services/hbot-exopod", label: "HBOT + EXOPOD" },
+      { href: "/services/exoskin", label: "ExoSkin" },
+      { href: "/veterans/ans-program", label: "Veterans ANS Program" },
     ],
   },
   {
     title: "For Business",
     links: [
+      { href: "/partners/operator-equity", label: "Operator–Equity Partnership" },
       { href: "/corporate-wellness", label: "Corporate Wellness" },
       { href: "/regen-university", label: "Regen University" },
     ],
@@ -36,7 +41,7 @@ const LINK_GROUPS = [
   {
     title: "Company",
     links: [
-      { href: "/", label: "Request Franchise Deck" },
+      { href: "/contact", label: "Contact" },
     ],
   },
 ] as const;
@@ -66,8 +71,8 @@ export function Footer() {
         <div className="mb-8">
           <BrandMark />
           <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-            Premium regenerative wellness experiences across clinical care, programs,
-            education, and partner ecosystems.
+            REAL PT & Wellness — physical and aquatic therapy with clinical-grade SwimEx
+            hydrotherapy. PT, recovery services, and memberships; insurance when appropriate, plus cash options.
           </p>
         </div>
 
@@ -137,7 +142,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-10 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground">
-            © {currentYear} RegenPulse. All rights reserved.
+            © {currentYear} REAL PT & Wellness. All rights reserved.
           </p>
         </div>
       </div>

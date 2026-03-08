@@ -5,9 +5,9 @@ import { DepartmentGrid } from "@/components/sections/department-grid";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Explore | RegenPulse",
+  title: "Explore | REAL PT & Wellness",
   description:
-    "Explore RegenPulse departments and clinical wellness services—diagnostics, recovery, and performance programs.",
+    "Explore REAL PT & Wellness departments and clinical wellness services—diagnostics, recovery, and performance programs.",
 };
 
 export default function DepartmentsPage() {

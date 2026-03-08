@@ -41,8 +41,8 @@ export function DepartmentsVideoHero() {
           Regeneration, Recovery, and Performance — Built for Real Life.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-100/90 sm:text-xl">
-          Clinical-grade diagnostics and recovery modalities, packaged into
-          memberships that keep you consistent — not confused.
+          REAL PT & Wellness — clinical-grade SwimEx aquatic therapy, diagnostics, and recovery
+          modalities, packaged into memberships that keep you consistent.
         </p>
         <p className="mt-4 text-sm text-slate-200/80 sm:text-base">
           Personalized protocols • Modern wellness tech • Designed for longevity

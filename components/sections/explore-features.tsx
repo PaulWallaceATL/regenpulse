@@ -11,6 +11,7 @@ import {
   HeartPulse,
   ShoppingBag,
   UtensilsCrossed,
+  Wind,
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -34,6 +35,12 @@ const features: FeatureItem[] = [
     title: "Memberships",
     description: "Tiered plans that support prevention, performance, and longevity.",
     href: "/memberships",
+  },
+  {
+    icon: Wind,
+    title: "HBOT + EXOPOD",
+    description: "Hyperbaric oxygen therapy and stacked recovery modalities in one membership.",
+    href: "/services/hbot-exopod",
   },
   {
     icon: Handshake,
@@ -86,7 +93,7 @@ export function ExploreFeaturesSection() {
               transition={{ duration: 0.35 }}
               className="text-sm text-slate-300"
             >
-              Platform Experiences
+              Services & Programs
             </motion.p>
 
             <motion.h2
@@ -96,7 +103,7 @@ export function ExploreFeaturesSection() {
               transition={{ duration: 0.35, delay: 0.05 }}
               className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
             >
-              Explore RegenPulse
+              Explore REAL PT & Wellness
             </motion.h2>
 
             <motion.p
@@ -106,8 +113,8 @@ export function ExploreFeaturesSection() {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="mt-4 max-w-2xl text-sm text-slate-300 sm:text-base"
             >
-              Explore programs, services, and platform experiences supporting
-              better health, mobility, and life-changing outcomes.
+              PT, aquatic therapy, and recovery services—plus memberships and programs
+              designed to support better movement, recovery, and wellness.
             </motion.p>
           </div>
 

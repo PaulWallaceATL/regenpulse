@@ -45,7 +45,7 @@ export function BrandMark({
             wordmarkClassName
           )}
         >
-          RegenPulse
+          REAL PT & Wellness
         </span>
       )}
     </span>

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { REALPT } from "@/lib/realpt";
 
 export default function Contact2() {
   const [agreed, setAgreed] = useState(false);
@@ -44,10 +45,10 @@ export default function Contact2() {
                   R
                 </div>
                 <p className="mt-4 font-semibold text-neutral-900 dark:text-white">
-                  RegenPulse
+                  {REALPT.siteName}
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Atlanta, GA
+                  <a href={`tel:${REALPT.phone}`} className="hover:underline">{REALPT.displayPhone}</a>
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link
