@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  "CryoSlimming — many clients report visible contouring over a series of sessions",
+  "CryoSlimming — many clients report visible contouring over a series of sessions; results vary",
   "CryoFacials",
   "Chin reduction",
   "Cellulite reduction",
@@ -53,7 +53,7 @@ export default function ExoskinPage() {
     <div className="brand-page min-h-screen overflow-x-hidden">
       <PageHero
         title="ExoSkin® Body Contouring + Recovery"
-        description="Clinical-grade body contouring, cryo, and recovery treatments with safety and support built in."
+        description="CryoSlimming, CryoFacials, EMS toning, and pain management with real-time monitoring and safety controls."
       />
 
       <section className="border-b border-border bg-background">
@@ -102,7 +102,7 @@ export default function ExoskinPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
               <Image
                 src="/images/placeholder.svg"
-                alt="ExoSkin body contouring and recovery treatment"
+                alt="ExoSkin body contouring and recovery treatment—clinical-grade cryo and EMS in a clinical setting."
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
