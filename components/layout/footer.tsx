@@ -71,8 +71,8 @@ export function Footer() {
         <div className="mb-8">
           <BrandMark />
           <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-            REAL PT & Wellness — physical and aquatic therapy with clinical-grade SwimEx
-            hydrotherapy. PT, recovery services, and memberships; insurance when appropriate, plus cash options.
+            REAL PT & Wellness — Physical and Aquatic Therapy. Clinical-grade SwimEx® pool in-house.
+            PT, aquatic therapy, and recovery services; insurance when appropriate, plus cash and membership options.
           </p>
         </div>
 

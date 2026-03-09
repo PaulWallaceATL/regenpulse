@@ -34,8 +34,8 @@ export function HeroSection() {
           REAL PT & Wellness — Physical and Aquatic Therapy
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-100/90 sm:text-xl">
-          Clinical-grade SwimEx hydrotherapy in-house. PT, aquatic therapy, and recovery
-          services—insurance when appropriate, plus cash and membership options designed to support how you move and recover.
+          Clinical-grade SwimEx® hydrotherapy pool in-house. PT, aquatic therapy, and recovery
+          services—insurance when appropriate, plus cash and membership options.
         </p>
       </div>
 

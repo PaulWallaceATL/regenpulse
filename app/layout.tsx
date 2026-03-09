@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | REAL PT & Wellness",
   },
   description:
-    "REAL PT & Wellness — physical and aquatic therapy with a clinical-grade SwimEx hydrotherapy pool. PT, aquatic therapy, and recovery services; insurance when appropriate, plus cash and membership options.",
+    "REAL PT & Wellness — Physical and Aquatic Therapy. Clinical-grade SwimEx® hydrotherapy pool in-house. PT, aquatic therapy, and recovery services; insurance when appropriate, plus cash and membership options.",
   keywords: [
     "REAL PT",
     "physical therapy",
