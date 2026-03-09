@@ -48,7 +48,7 @@ export default function AquaticTherapyPage() {
               <Link href={REALPT.schedulingUrl}>Book Aquatic PT Evaluation</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href={`${REALPT.membershipsUrl}#memberships`}>View Membership Options</Link>
+              <Link href={`${REALPT.membershipsUrl}#tier-comparison`}>View Membership Options</Link>
             </Button>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function AquaticTherapyPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
               <Image
                 src="/images/placeholder.svg"
-                alt="Clinical-grade SwimEx hydrotherapy pool for aquatic physical therapy"
+                alt="Clinical-grade SwimEx hydrotherapy pool for aquatic physical therapy—adjustable current, multi-depth."
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -115,7 +115,7 @@ export default function AquaticTherapyPage() {
             Aquatic therapy is part of our standard PT plans. We work with insurance when appropriate and also offer cash and membership options so you can get the frequency and access that fits your goals.
           </p>
           <div className="mt-8 rounded-xl border border-border bg-background p-6">
-            <h3 className="font-semibold text-foreground">Pricing teaser</h3>
+            <h3 className="font-semibold text-foreground">Membership pricing</h3>
             <p className="mt-2 text-muted-foreground">
               Memberships start at $49.99/month. Higher tiers include more sessions and access to other recovery services.
             </p>
