@@ -156,18 +156,12 @@ export function MembershipComparison() {
             </div>
           </motion.div>
 
-          {/* Right Column - Comparison Table (scrollable on small screens) */}
-          <div className="w-full overflow-hidden">
+          {/* Right Column - Comparison Table (scrollable on small screens, full width no fade) */}
+          <div className="w-full min-w-0">
             <p className="mb-3 text-xs text-muted-foreground lg:sr-only">
               Swipe or scroll horizontally to compare all tiers.
             </p>
-            <div
-              className="overflow-x-auto pb-2 scroll-smooth max-lg:pr-8"
-              style={{
-                maskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
-              }}
-            >
+            <div className="overflow-x-auto overflow-y-visible pb-2 scroll-smooth pr-2">
               <table className="w-full min-w-[680px] border-collapse text-left">
                 <thead>
                   <tr>

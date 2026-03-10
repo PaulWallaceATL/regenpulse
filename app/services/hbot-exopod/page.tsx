@@ -14,11 +14,13 @@ import {
   Activity,
   type LucideIcon,
 } from "lucide-react";
-import { PageHero } from "@/components/sections/page-hero";
+import { ServiceVideoHero } from "@/components/sections/service-video-hero";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { REALPT } from "@/lib/realpt";
+
+const HBOT_HERO_VIDEO = "/videos/oxygen-bubbles-hero.mov";
 
 export const metadata: Metadata = {
   title: "HBOT + EXOPOD Memberships | REAL PT & Wellness",
@@ -69,23 +71,25 @@ const GETTING_STARTED = [
 export default function HbotExopodPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
-      <PageHero
+      <ServiceVideoHero
         title="Hyperbaric Oxygen Therapy (HBOT) + EXOPOD™ Memberships"
         description="Stacked recovery modalities designed to support performance, recovery, and wellness."
-      />
-
-      <section className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-8 sm:px-6 md:py-12">
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button asChild>
-              <Link href={REALPT.schedulingUrl}>Book HBOT Session</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="#membership-tiers">Start EXOPOD Membership</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        videoSrc={HBOT_HERO_VIDEO}
+        videoType="video/quicktime"
+      >
+        <Link
+          href={REALPT.schedulingUrl}
+          className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        >
+          Book HBOT Session
+        </Link>
+        <Link
+          href="#membership-tiers"
+          className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        >
+          Start EXOPOD Membership
+        </Link>
+      </ServiceVideoHero>
 
       <section className="border-b border-border bg-muted/30">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">

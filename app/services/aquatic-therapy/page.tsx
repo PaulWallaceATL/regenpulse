@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { PageHero } from "@/components/sections/page-hero";
+import { ServiceVideoHero } from "@/components/sections/service-video-hero";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { REALPT } from "@/lib/realpt";
+
+const AQUATIC_HERO_VIDEO = "/videos/oxygen-bubbles-hero.mov";
 
 export const metadata: Metadata = {
   title: "Aquatic Therapy (SwimEx) | REAL PT & Wellness",
@@ -36,23 +38,25 @@ const USE_CASES = [
 export default function AquaticTherapyPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
-      <PageHero
+      <ServiceVideoHero
         title="Aquatic Therapy with SwimEx®"
         description="True clinical-grade hydrotherapy—adjustable current, multi-depth, full control."
-      />
-
-      <section className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-8 sm:px-6 md:py-12">
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button asChild>
-              <Link href={REALPT.schedulingUrl}>Book Aquatic PT Evaluation</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href={`${REALPT.membershipsUrl}#tier-comparison`}>View Membership Options</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        videoSrc={AQUATIC_HERO_VIDEO}
+        videoType="video/quicktime"
+      >
+        <Link
+          href={REALPT.schedulingUrl}
+          className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        >
+          Book Aquatic PT Evaluation
+        </Link>
+        <Link
+          href={`${REALPT.membershipsUrl}#tier-comparison`}
+          className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        >
+          View Membership Options
+        </Link>
+      </ServiceVideoHero>
 
       <section className="border-b border-border bg-muted/30">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
