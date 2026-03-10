@@ -107,7 +107,7 @@ export default function VeteransAnsProgramPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
               <Image
-                src="/images/placeholder.svg"
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
                 alt="Clinical ANS testing in a respectful, veteran-focused setting—non-invasive autonomic nervous system evaluation."
                 fill
                 className="object-cover"

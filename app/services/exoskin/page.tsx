@@ -104,7 +104,7 @@ export default function ExoskinPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
               <Image
-                src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80"
+                src="/images/services/exoskin/body-contouring-treatment.jpg"
                 alt="ExoSkin body contouring and recovery treatment—clinical-grade cryo and EMS in a clinical setting."
                 fill
                 className="object-cover"

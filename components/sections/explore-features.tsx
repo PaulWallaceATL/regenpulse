@@ -152,7 +152,7 @@ export function ExploreFeaturesSection() {
             <Button asChild>
               <Link href="/partner-network">View Kentucky Network Plan</Link>
             </Button>
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white">
               <Link href="/departments">Browse Departments</Link>
             </Button>
           </div>

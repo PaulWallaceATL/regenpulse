@@ -53,7 +53,7 @@ const SERVICES_ITEMS = [
 const PRIMARY_LINKS = [
   { label: "Explore", href: "/departments" },
   { label: "Services", href: "/services/aquatic-therapy" },
-  { label: "Pricing", href: "/memberships#tier-comparison" },
+  { label: "Pricing", href: "/memberships" },
   { label: "Partners", href: "/partners/operator-equity" },
   { label: "Veterans", href: "/veterans/ans-program" },
 ] as const;
@@ -194,7 +194,7 @@ export default function Navigation2() {
                   )}
                 </AnimatePresence>
               </div>
-              <Link href="/memberships#tier-comparison" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Pricing</Link>
+              <Link href="/memberships" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Pricing</Link>
               <Link href="/partners/operator-equity" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Partners</Link>
               <Link href="/veterans/ans-program" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Veterans</Link>
             </nav>
@@ -245,7 +245,7 @@ export default function Navigation2() {
               >
                 <div className="space-y-2 pt-2">
                   <Link href="/departments" className="block rounded-2xl border border-neutral-200/60 bg-white/40 px-4 py-3 text-sm font-medium text-neutral-700 dark:border-neutral-800/60 dark:bg-neutral-900/30 dark:text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Explore</Link>
-                  <Link href="/memberships#tier-comparison" className="block rounded-2xl border border-neutral-200/60 bg-white/40 px-4 py-3 text-sm font-medium text-neutral-700 dark:border-neutral-800/60 dark:bg-neutral-900/30 dark:text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+                  <Link href="/memberships" className="block rounded-2xl border border-neutral-200/60 bg-white/40 px-4 py-3 text-sm font-medium text-neutral-700 dark:border-neutral-800/60 dark:bg-neutral-900/30 dark:text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
                   <Link href="/partners/operator-equity" className="block rounded-2xl border border-neutral-200/60 bg-white/40 px-4 py-3 text-sm font-medium text-neutral-700 dark:border-neutral-800/60 dark:bg-neutral-900/30 dark:text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Partners</Link>
                   <Link href="/veterans/ans-program" className="block rounded-2xl border border-neutral-200/60 bg-white/40 px-4 py-3 text-sm font-medium text-neutral-700 dark:border-neutral-800/60 dark:bg-neutral-900/30 dark:text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Veterans</Link>
 

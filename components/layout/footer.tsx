@@ -15,7 +15,7 @@ const LINK_GROUPS = [
       { href: "/", label: "Home" },
       { href: "/departments", label: "Departments" },
       { href: "/memberships", label: "Memberships" },
-      { href: "/memberships#tier-comparison", label: "Pricing" },
+      { href: "/memberships", label: "Pricing" },
       { href: "/partner-network", label: "Partner Network" },
       { href: "/services/aquatic-therapy", label: "Aquatic Therapy" },
       { href: "/services/hbot-exopod", label: "HBOT + EXOPOD" },
