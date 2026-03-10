@@ -102,8 +102,8 @@ export default function Navigation2() {
               <div className="relative" ref={servicesDropdownRef}>
                 <button
                   type="button"
-                  onClick={() => setServicesOpen((v) => !v)}
-                  onMouseEnter={() => setServicesOpen(true)}
+                  onClick={() => { setServicesOpen((v) => !v); setSolutionsOpen(false); }}
+                  onMouseEnter={() => { setServicesOpen(true); setSolutionsOpen(false); }}
                   className="flex items-center gap-1 text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors"
                   aria-expanded={servicesOpen}
                   aria-haspopup="true"
@@ -150,8 +150,8 @@ export default function Navigation2() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   type="button"
-                  onClick={() => setSolutionsOpen((v) => !v)}
-                  onMouseEnter={() => setSolutionsOpen(true)}
+                  onClick={() => { setSolutionsOpen((v) => !v); setServicesOpen(false); }}
+                  onMouseEnter={() => { setSolutionsOpen(true); setServicesOpen(false); }}
                   className="flex items-center gap-1 text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors"
                   aria-expanded={solutionsOpen}
                   aria-haspopup="true"
