@@ -4,20 +4,20 @@ import { UniversityCampusSection } from "@/components/solutions/UniversityCampus
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "University | RegenPulse",
+  title: "REAL University | REAL PT & Wellness",
   description:
-    "Partner with athletics programs and university wellness systems to bring RegenPulse services to campuses—student-athletes, students, faculty, and staff.",
+    "Partner with athletics programs and university wellness systems to bring REAL PT & Wellness services to campuses—student-athletes, students, faculty, and staff.",
 };
 
 export default function RegenUniversityPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
       <SolutionsVideoHero
-        badge="University"
+        badge="REAL University"
         title="Partner with athletics programs and university wellness systems."
-        subtitle="Bring RegenPulse to your campus—recovery and performance for athletes, wellness for students and staff, and integration with campus rec and health services."
+        subtitle="Bring REAL PT & Wellness to your campus—recovery and performance for athletes, wellness for students and staff, and integration with campus rec and health services."
         primaryCta={{ label: "Partner with us", href: "/contact" }}
-        secondaryCta={{ label: "Our partnerships", scrollId: "regen-university-content" }}
+        secondaryCta={{ label: "Our partnerships", scrollId: "real-university-content" }}
         footnote="Athletics • Campus wellness • Student & employee health"
       />
       <UniversityCampusSection />

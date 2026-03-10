@@ -59,7 +59,7 @@ const KEY_FEATURES = [
   {
     id: "ubereats",
     title: "One-click Uber Eats ordering",
-    description: "Order Regen Fresh–approved meals from partner restaurants via Uber Eats without leaving the app.",
+    description: "Order REAL Fresh–approved meals from partner restaurants via Uber Eats without leaving the app.",
     icon: ShoppingBag,
   },
   {
@@ -78,10 +78,10 @@ const KEY_FEATURES = [
 
 const DAY_IN_LIFE = [
   { time: "6:00 AM", label: "Morning check-in", detail: "Log sleep, weight (optional); daily mission appears.", icon: Sun },
-  { time: "7:30 AM", label: "Fresh delivery", detail: "Today’s Regen Fresh meals arrive or are ready for pickup.", icon: Truck },
+  { time: "7:30 AM", label: "Fresh delivery", detail: "Today’s REAL Fresh meals arrive or are ready for pickup.", icon: Truck },
   { time: "8:00 AM", label: "Breakfast + macro log", detail: "Eat from plan; one-tap log or scan. Streak counts.", icon: Coffee },
   { time: "12:00 PM", label: "Lunch (Uber Eats)", detail: "One-click order from approved menu; delivered to home or office.", icon: UtensilsCrossed },
-  { time: "5:30 PM", label: "Class or recovery", detail: "Live class on Regen TV or visit partner location.", icon: Dumbbell },
+  { time: "5:30 PM", label: "Class or recovery", detail: "Live class or visit partner location.", icon: Dumbbell },
   { time: "7:00 PM", label: "Dinner + reflect", detail: "Final meal from plan; weekly summary and rewards unlock.", icon: Moon },
 ] as const;
 
@@ -90,7 +90,7 @@ export function RegenFresh() {
     <section className="brand-section">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Regen Fresh | Nutrition Delivery
+          REAL Fresh | Nutrition Delivery
         </h2>
         <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
           Meal plans that fit your tier, delivery how you want—nationwide
@@ -168,9 +168,9 @@ export function RegenFresh() {
                   Partnership with Uber Eats
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Order from a curated list of Regen Fresh–approved restaurants
+                  Order from a curated list of REAL Fresh–approved restaurants
                   on Uber Eats. Meals count toward your plan and macro goals;
-                  one-click ordering from the RegenPulse app with member pricing
+                  one-click ordering from the REAL PT & Wellness app with member pricing
                   where available.
                 </p>
               </CardContent>
@@ -204,13 +204,13 @@ export function RegenFresh() {
           </div>
         </div>
 
-        {/* Ecosystem Synergy: A Day in RegenPulse Life */}
+        {/* Ecosystem Synergy: A day in REAL life */}
         <div className="mt-12">
           <h3 className="text-lg font-semibold text-foreground mb-2">
             Ecosystem Synergy
           </h3>
           <p className="text-sm text-muted-foreground mb-6">
-            A Day in RegenPulse Life — how nutrition fits with check-ins,
+            A day in REAL life — how nutrition fits with check-ins,
             delivery, classes, and rewards.
           </p>
           <ul className="space-y-0">

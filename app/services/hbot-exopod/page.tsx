@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { REALPT } from "@/lib/realpt";
 
-const HBOT_HERO_VIDEO = "/videos/pool-water-hero.mp4";
+const HBOT_HERO_VIDEO = "/videos/oxygen-bubbles-hero.mov";
 
 export const metadata: Metadata = {
   title: "HBOT + EXOPOD Memberships | REAL PT & Wellness",
@@ -75,7 +75,7 @@ export default function HbotExopodPage() {
         title="Hyperbaric Oxygen Therapy (HBOT) + EXOPOD™ Memberships"
         description="Stacked recovery modalities designed to support performance, recovery, and wellness."
         videoSrc={HBOT_HERO_VIDEO}
-        videoType="video/mp4"
+        videoType="video/quicktime"
       >
         <Link
           href={REALPT.schedulingUrl}

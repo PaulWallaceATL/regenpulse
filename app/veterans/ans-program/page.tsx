@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { PageHero } from "@/components/sections/page-hero";
+import { ServiceVideoHero } from "@/components/sections/service-video-hero";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { REALPT } from "@/lib/realpt";
+
+const VETERANS_HERO_VIDEO = "/videos/veterans-hero.mov";
 
 export const metadata: Metadata = {
   title: "Veterans ANS Program | REAL PT & Wellness",
@@ -21,10 +23,25 @@ export default function VeteransAnsProgramPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
       <section id="veterans-hero" className="scroll-mt-6">
-        <PageHero
+        <ServiceVideoHero
           title="Veterans / VA & DoD ANS Testing"
           description="Autonomic nervous system testing that has been used in VA and DoD settings—integrated into your PT and recovery plan."
-        />
+          videoSrc={VETERANS_HERO_VIDEO}
+          videoType="video/quicktime"
+        >
+          <Link
+            href={REALPT.schedulingUrl}
+            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+          >
+            Request ANS Evaluation
+          </Link>
+          <Link
+            href={REALPT.contactUrl}
+            className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+          >
+            Discuss Referral Options
+          </Link>
+        </ServiceVideoHero>
       </section>
 
       <section id="veterans-why-ans" className="scroll-mt-6 border-b border-border bg-background">

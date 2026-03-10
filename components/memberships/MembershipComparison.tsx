@@ -17,7 +17,7 @@ const TIER_DESCRIPTIONS: Record<TierId, string> = {
 };
 
 const CORE_FEATURES = [
-  "Access to all RegenPulse partner locations",
+  "Access to all REAL PT & Wellness partner locations",
   "Online booking and appointment management",
   "Member-only pricing on select services",
   "Insurance verification support",

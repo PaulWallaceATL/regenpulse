@@ -203,7 +203,7 @@ export function RegenMart() {
       <section className="brand-section">
         <div className="container mx-auto px-4 py-12 md:py-16">
           <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Regen Mart | Equipment & Wearables Marketplace
+            REAL Mart | Equipment & Wearables Marketplace
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
             Equipment, wearables, and recovery gear—all in one place. Member
@@ -222,7 +222,7 @@ export function RegenMart() {
       <section className="brand-section">
         <div className="container mx-auto px-4 py-12 md:py-16">
           <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Regen Mart | Equipment & Wearables Marketplace
+            REAL Mart | Equipment & Wearables Marketplace
           </h2>
           <p className="mt-10 text-center text-destructive">{error}</p>
         </div>
@@ -234,7 +234,7 @@ export function RegenMart() {
     <section className="brand-section">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Regen Mart | Equipment & Wearables Marketplace
+          REAL Mart | Equipment & Wearables Marketplace
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
           Equipment, wearables, and recovery gear—all in one place. Member
@@ -399,7 +399,7 @@ export function RegenMart() {
         {filtered.length === 0 && (
           <p className="mt-10 text-center text-muted-foreground">
             {products.length === 0
-              ? "No products yet. Run the Regen Mart SKU seed in Supabase."
+              ? "No products yet. Run the REAL Mart SKU seed in Supabase."
               : "No products match the current filters."}
           </p>
         )}

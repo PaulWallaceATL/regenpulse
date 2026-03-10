@@ -15,7 +15,7 @@ const PARTNERSHIP_AREAS = [
   {
     id: "wellness",
     title: "University Wellness Systems",
-    description: "Work with campus wellness and student health to offer RegenPulse services campus-wide—from rec centers and health clinics to employee wellness and student engagement.",
+    description: "Work with campus wellness and student health to offer REAL PT & Wellness services campus-wide—from rec centers and health clinics to employee wellness and student engagement.",
     icon: Heart,
   },
   {
@@ -36,7 +36,7 @@ const OFFERINGS = [
 
 export function UniversityCampusSection() {
   return (
-    <section id="regen-university-content" className="bg-white dark:bg-neutral-950 py-16 md:py-24">
+    <section id="real-university-content" className="bg-white dark:bg-neutral-950 py-16 md:py-24">
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -48,7 +48,7 @@ export function UniversityCampusSection() {
             Partner with Athletics & University Wellness
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg">
-            We partner with athletics programs and university wellness systems to bring RegenPulse services to campuses—supporting student-athletes, students, faculty, and staff with recovery, performance, and holistic wellness.
+            We partner with athletics programs and university wellness systems to bring REAL PT & Wellness services to campuses—supporting student-athletes, students, faculty, and staff with recovery, performance, and holistic wellness.
           </p>
         </motion.div>
 

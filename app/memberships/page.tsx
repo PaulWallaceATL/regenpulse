@@ -5,9 +5,9 @@ import PricingMemberships from "@/components/departments/PricingMemberships";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Memberships | RegenPulse",
+  title: "Memberships | REAL PT & Wellness",
   description:
-    "Learn how RegenPulse memberships work — benefits, tiers, and what to expect at every level.",
+    "Learn how REAL PT & Wellness memberships work — benefits, tiers, and what to expect at every level.",
 };
 
 export default function MembershipsPage() {

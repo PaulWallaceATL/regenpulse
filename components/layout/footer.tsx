@@ -15,6 +15,7 @@ const LINK_GROUPS = [
       { href: "/", label: "Home" },
       { href: "/departments", label: "Departments" },
       { href: "/memberships", label: "Memberships" },
+      { href: "/memberships#tier-comparison", label: "Pricing" },
       { href: "/partner-network", label: "Partner Network" },
       { href: "/services/aquatic-therapy", label: "Aquatic Therapy" },
       { href: "/services/hbot-exopod", label: "HBOT + EXOPOD" },
@@ -27,14 +28,15 @@ const LINK_GROUPS = [
     links: [
       { href: "/partners/operator-equity", label: "Operator–Equity Partnership" },
       { href: "/corporate-wellness", label: "Corporate Wellness" },
-      { href: "/regen-university", label: "Regen University" },
+      { href: "/regen-university", label: "REAL University" },
+      { href: "/government", label: "Government" },
     ],
   },
   {
     title: "Programs & Shop",
     links: [
-      { href: "/regen-fresh", label: "Regen Fresh" },
-      { href: "/regen-mart", label: "Regen Mart" },
+      { href: "/regen-fresh", label: "REAL Fresh" },
+      { href: "/regen-mart", label: "REAL Mart" },
       { href: "/cost-plus-rx", label: "Cost Plus RX" },
     ],
   },
