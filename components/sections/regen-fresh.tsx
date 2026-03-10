@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Truck,
   UtensilsCrossed,
@@ -11,8 +12,11 @@ import {
   Coffee,
   Dumbbell,
   Moon,
+  FileText,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+const MENU_PDF_URL = "/menus/canebier-cafe-menu.pdf";
 import {
   Table,
   TableBody,
@@ -95,6 +99,17 @@ export function RegenFresh() {
         <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
           Meal plans that fit your tier, delivery how you want—nationwide
           fresh-shipped or via Uber Eats.
+        </p>
+        <p className="mt-4 text-center">
+          <Link
+            href={MENU_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted"
+          >
+            <FileText className="h-4 w-4" aria-hidden />
+            View menu (PDF)
+          </Link>
         </p>
 
         {/* Meal Tiers table */}
