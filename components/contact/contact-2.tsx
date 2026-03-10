@@ -3,11 +3,19 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
+import { Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { REALPT } from "@/lib/realpt";
+
+const SOCIAL_LINKS = [
+  { href: "https://twitter.com/regenpulse", label: "Twitter", icon: Twitter },
+  { href: "https://linkedin.com/company/regenpulse", label: "LinkedIn", icon: Linkedin },
+  { href: "https://instagram.com/regenpulse", label: "Instagram", icon: Instagram },
+  { href: "https://youtube.com/@regenpulse", label: "YouTube", icon: Youtube },
+] as const;
 
 export default function Contact2() {
   const [agreed, setAgreed] = useState(false);
@@ -30,15 +38,31 @@ export default function Contact2() {
                 transition={{ duration: 0.4 }}
                 className="mb-4 text-2xl font-normal text-neutral-900 dark:text-white sm:text-3xl"
               >
-                Ready to create
-                <br />
-                something amazing?
+                Get in touch—for care or partnership.
               </motion.h2>
-              <motion.div
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.05 }}
+                className="mt-4 text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md"
+              >
+                Whether you’re looking for physical therapy, aquatic therapy in our clinical-grade SwimEx® pool, or recovery services like HBOT and EXOPOD—we’re here. We work with insurance when appropriate and offer cash and membership options so you can get the care that fits.
+              </motion.p>
+              <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 }}
+                className="mt-6 text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md"
+              >
+                If you’re a business or institution—corporate wellness, operator–equity partnership, government programs, or campus partnerships through REAL University—use the form or give us a call to start the conversation.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.15 }}
                 className="mt-8"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold">
@@ -50,40 +74,21 @@ export default function Contact2() {
                 <p className="mt-1 text-sm text-muted-foreground">
                   <a href={`tel:${REALPT.phone}`} className="hover:underline">{REALPT.displayPhone}</a>
                 </p>
-                <div className="mt-6 flex flex-wrap gap-4">
-                  <Link
-                    href="https://linkedin.com/company/regenpulse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
-                  >
-                    LinkedIn
-                  </Link>
-                  <Link
-                    href="https://instagram.com/regenpulse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
-                  >
-                    Instagram
-                  </Link>
-                  <Link
-                    href="https://twitter.com/regenpulse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
-                  >
-                    Twitter
-                  </Link>
-                  <Link
-                    href="https://youtube.com/@regenpulse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
-                  >
-                    YouTube
-                  </Link>
-                </div>
+                <ul className="mt-6 flex flex-wrap gap-4" aria-label="Social links">
+                  {SOCIAL_LINKS.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center rounded-lg p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 transition-colors"
+                        aria-label={item.label}
+                      >
+                        <item.icon className="h-5 w-5" aria-hidden />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             </div>
           </div>

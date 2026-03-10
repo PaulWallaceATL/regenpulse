@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/sections/page-hero";
+import { ServiceVideoHero } from "@/components/sections/service-video-hero";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { REALPT } from "@/lib/realpt";
+
+const OPERATOR_EQUITY_HERO_VIDEO = "/videos/operator-equity-hero.mp4";
 
 export const metadata: Metadata = {
   title: "Operator–Equity Partnership | REAL PT & Wellness",
@@ -42,18 +44,19 @@ const TIMELINE_STEPS = [
 export default function OperatorEquityPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
-      <PageHero
+      <ServiceVideoHero
         title="Operator–Equity Partnership (Not a Franchise)"
         description="Build with us as an equity partner—PT, aquatic therapy, and recovery with shared technology and no franchise fees."
-      />
-
-      <section className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-8 sm:px-6 md:py-12">
-          <Button asChild>
-            <Link href={REALPT.contactUrl}>Discuss Partnership</Link>
-          </Button>
-        </div>
-      </section>
+        videoSrc={OPERATOR_EQUITY_HERO_VIDEO}
+        videoType="video/mp4"
+      >
+        <Link
+          href={REALPT.contactUrl}
+          className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        >
+          Discuss Partnership
+        </Link>
+      </ServiceVideoHero>
 
       <section className="border-b border-border bg-muted/30">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
