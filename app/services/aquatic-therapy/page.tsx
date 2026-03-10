@@ -99,7 +99,7 @@ export default function AquaticTherapyPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
               <Image
-                src="/images/placeholder.svg"
+                src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80"
                 alt="Clinical-grade SwimEx hydrotherapy pool for aquatic physical therapy—adjustable current, multi-depth."
                 fill
                 className="object-cover"

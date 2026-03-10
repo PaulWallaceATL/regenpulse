@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Thermometer,
   Zap,
@@ -140,12 +141,25 @@ export default function HbotExopodPage() {
 
       <section className="border-b border-border bg-background">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            EXOPOD: Stacked Modalities in One Session
-          </h2>
-          <p className="mt-2 max-w-2xl text-muted-foreground">
-            EXOPOD combines multiple recovery and wellness modalities in one session and membership—so you can get consistent, structured access to technologies designed to support how you feel and perform.
-          </p>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted order-2 lg:order-1">
+              <Image
+                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80"
+                alt="Recovery and wellness environment—HBOT and EXOPOD at REAL PT & Wellness."
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                EXOPOD: Stacked Modalities in One Session
+              </h2>
+              <p className="mt-2 max-w-2xl text-muted-foreground">
+                EXOPOD combines multiple recovery and wellness modalities in one session and membership—so you can get consistent, structured access to technologies designed to support how you feel and perform.
+              </p>
+            </div>
+          </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {EXOPOD_MODALITIES.map(({ label, icon: Icon }) => (
               <div
