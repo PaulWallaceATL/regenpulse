@@ -5,9 +5,9 @@ import { createClient } from "@/lib/supabase/server";
 export const runtime = "nodejs";
 export const maxDuration = 30;
 
-const SYSTEM_BASE = `You are a friendly Regen Mart assistant on the RegenPulse wellness platform. You help customers with questions about equipment, recovery gear, and wellness products.
+const SYSTEM_BASE = `You are a friendly REAL Mart assistant on the REAL PT & Wellness platform. You help customers with questions about equipment, recovery gear, and wellness products.
 
-Regen Mart categories and options:
+REAL Mart categories and options:
 - Categories: Aquatic, HBOT, Thermal/Ozone, Recovery Pods, Rehab/Strength, Diagnostics, Neuro/Vets, Retail/POS, Kitchen/Lounge
 - Brands: SwimEx, HBOT Pro, HOCATT, Ammortal, Hyperice, CryoPhit, Lympha Press, VAbody, Arca Aesthetics, Speediance, Storz Medical, LightForce, Olympic, DEXA, PNOE, Symmetry, Inogen, O2 Smoothie, Masimo
 - Service flows: Full Regen (Aquatic, Oxygen, Rehab, Intake, End, Public), Recovery Bay, NEW Rehab Bay, NEW Strength Bay, Neuro/Vets Branch, Retail Upsell, Lounge/Public
@@ -181,7 +181,7 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error("Regen Mart chat error:", err);
+    console.error("REAL Mart chat error:", err);
 
     if (message.includes("401") || message.toLowerCase().includes("invalid") || message.toLowerCase().includes("api key")) {
       return NextResponse.json(

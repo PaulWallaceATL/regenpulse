@@ -103,11 +103,11 @@ export function RegenMartChat() {
         <div
           className="fixed bottom-24 left-6 z-50 flex w-full max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl"
           role="dialog"
-          aria-label="Regen Mart assistant"
+          aria-label="REAL Mart assistant"
         >
           <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
             <h3 className="font-semibold text-gray-900">
-              Regen Mart Assistant
+              REAL Mart Assistant
             </h3>
             <p className="text-xs text-gray-600">
               Ask about equipment, recovery, or products. I can point you to the
