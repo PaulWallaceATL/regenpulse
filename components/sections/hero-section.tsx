@@ -12,7 +12,7 @@ export function HeroSection() {
           aria-hidden
         >
           <source
-            src="/videos/memberships-hero.mp4"
+            src="/videos/pool-water-hero.mp4"
             type="video/mp4"
           />
         </video>
