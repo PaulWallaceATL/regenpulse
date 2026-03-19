@@ -15,13 +15,10 @@ import {
   Activity,
   type LucideIcon,
 } from "lucide-react";
-import { ServiceVideoHero } from "@/components/sections/service-video-hero";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { REALPT } from "@/lib/realpt";
-
-const HBOT_HERO_VIDEO = "/videos/oxygen-bubbles-hero.mp4";
 
 export const metadata: Metadata = {
   title: "HBOT + EXOPOD Memberships | REAL PT & Wellness",
@@ -72,25 +69,42 @@ const GETTING_STARTED = [
 export default function HbotExopodPage() {
   return (
     <div className="brand-page min-h-screen overflow-x-hidden">
-      <ServiceVideoHero
-        title="Hyperbaric Oxygen Therapy (HBOT) + EXOPOD™ Memberships"
-        description="Stacked recovery modalities designed to support performance, recovery, and wellness."
-        videoSrc={HBOT_HERO_VIDEO}
-        videoType="video/mp4"
-      >
-        <Link
-          href={REALPT.schedulingUrl}
-          className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-        >
-          Book HBOT Session
-        </Link>
-        <Link
-          href="#membership-tiers"
-          className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-        >
-          Start EXOPOD Membership
-        </Link>
-      </ServiceVideoHero>
+      {/* Hero — Everyday Hyperbaric chamber image */}
+      <section className="relative flex min-h-[70vh] flex-col overflow-hidden pt-20 sm:min-h-[80vh] md:min-h-[100svh]">
+        <div className="absolute inset-0 z-0 bg-neutral-900">
+          <Image
+            src="/images/services/hbot-exopod/everyday-hbot-clinic-web.jpg"
+            alt="Everyday Hyperbaric chamber at REAL PT & Wellness"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40" />
+        </div>
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:py-28 md:items-start md:px-12 md:py-32 md:text-left lg:px-16 xl:px-24">
+          <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+            Hyperbaric Oxygen Therapy (HBOT) + EXOPOD™ Memberships
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-slate-100/90 sm:mt-6 sm:text-xl">
+            Stacked recovery modalities designed to support performance, recovery, and wellness.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:mt-10 md:justify-start">
+            <Link
+              href={REALPT.schedulingUrl}
+              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02]"
+            >
+              Book HBOT Session
+            </Link>
+            <Link
+              href="#membership-tiers"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15"
+            >
+              Start EXOPOD Membership
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section className="border-b border-border bg-muted/30">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
