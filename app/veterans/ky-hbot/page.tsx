@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShieldCheck,
   Brain,
@@ -104,17 +105,15 @@ export default function KyHbotVetsPage() {
       {/* Hero */}
       <section className="relative flex min-h-[70vh] flex-col overflow-hidden pt-20 sm:min-h-[80vh] md:min-h-[100svh]">
         <div className="absolute inset-0 z-0 bg-neutral-950">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover"
-            aria-hidden
-          >
-            <source src="/videos/pool-water-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/50 to-neutral-950/90" />
+          <Image
+            src="/images/veterans/ky-hbot/va-veterans-hbot-chamber.jpg"
+            alt="Veterans receiving hyperbaric oxygen therapy inside a multiplace HBOT chamber"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/75 via-neutral-950/50 to-neutral-950/85" />
         </div>
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:py-28 md:items-start md:px-12 md:py-32 md:text-left lg:px-16 xl:px-24">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5">
@@ -260,12 +259,25 @@ export default function KyHbotVetsPage() {
       {/* Treatment Details */}
       <section className="border-t border-white/10 bg-neutral-900">
         <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Treatment Details
-          </h2>
-          <p className="mt-3 max-w-2xl text-slate-400">
-            HBOT places you in a pressurized, medical-grade hardshell chamber where you breathe 100% oxygen. This dramatically increases blood oxygenation, promoting brain tissue healing and neurological recovery.
-          </p>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                Treatment Details
+              </h2>
+              <p className="mt-3 text-slate-400">
+                HBOT places you in a pressurized, medical-grade hardshell chamber where you breathe 100% oxygen. This dramatically increases blood oxygenation, promoting brain tissue healing and neurological recovery.
+              </p>
+            </div>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 bg-neutral-950">
+              <Image
+                src="/images/veterans/ky-hbot/hbot-chambers-facility.jpg"
+                alt="Row of medical-grade HBOT chambers in a modern treatment facility"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {TREATMENT_DETAILS.map(({ label, icon: Icon, value }) => (
               <div
@@ -288,12 +300,25 @@ export default function KyHbotVetsPage() {
       {/* How REAL PT Works With the Program */}
       <section className="border-t border-white/10 bg-gradient-to-b from-neutral-950 to-neutral-900">
         <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
-            Our Role
-          </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            How REAL PT & Wellness Works With This Program
-          </h2>
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
+            <div>
+              <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
+                Our Role
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                How REAL PT & Wellness Works With This Program
+              </h2>
+            </div>
+            <div className="relative hidden lg:block w-[340px] aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-neutral-950">
+              <Image
+                src="/images/veterans/ky-hbot/military-hbot-porthole.jpg"
+                alt="View through HBOT chamber porthole showing veterans receiving hyperbaric oxygen treatment"
+                fill
+                className="object-cover"
+                sizes="340px"
+              />
+            </div>
+          </div>
           <div className="mt-6 max-w-3xl space-y-4 text-slate-400 leading-relaxed">
             <p>
               REAL PT & Wellness serves as a <strong className="text-white">treatment partner</strong> within the HBOT4KYVETS network. When a veteran qualifies through the state program, they can receive their prescribed HBOT sessions at our facility — at no cost to them.
