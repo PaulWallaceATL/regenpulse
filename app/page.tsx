@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
-    <div className="brand-page">
+    <div className="min-h-screen overflow-x-hidden bg-neutral-950 text-foreground">
       <HeroSection />
       <KeyPartners />
       <ExploreFeaturesSection />
