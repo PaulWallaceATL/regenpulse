@@ -1,12 +1,3 @@
-"use client";
-
-const metrics = [
-  { value: "4", label: "Markets Across Kentucky + Appalachia" },
-  { value: "10,000+", label: "Patients Served" },
-  { value: "92%", label: "Patient-Reported Mobility Improvement" },
-  { value: "24/7", label: "Support For Everyday Life" },
-];
-
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden pt-20">
@@ -37,21 +28,6 @@ export function HeroSection() {
           Clinical-grade SwimEx® hydrotherapy pool in-house. PT, aquatic therapy, and recovery
           services—insurance when appropriate, plus cash and membership options.
         </p>
-      </div>
-
-      {/* Metric bar */}
-      <div className="border-t border-white/15 bg-black/80 backdrop-blur-sm">
-        <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
-          {metrics.map(({ value, label }) => (
-            <div
-              key={label}
-              className="rounded-lg border border-white/20 bg-black/40 px-4 py-3 text-center text-slate-100 backdrop-blur-sm"
-            >
-              <p className="text-2xl font-bold text-cyan-200 sm:text-3xl">{value}</p>
-              <p className="text-xs font-medium text-slate-200 sm:text-sm">{label}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
