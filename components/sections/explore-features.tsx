@@ -84,9 +84,9 @@ const features: FeatureItem[] = [
 export function ExploreFeaturesSection() {
   return (
     <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-      {/* Background image — Everyday Hyperbaric chamber */}
+      {/* Background image — SwimEx aquatic therapy pool */}
       <Image
-        src="/images/services/hbot-exopod/everyday-hbot-clinic-web.jpg"
+        src="/images/swimex/swimex-bg.jpg"
         alt=""
         fill
         className="object-cover"

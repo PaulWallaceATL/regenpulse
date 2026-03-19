@@ -234,6 +234,47 @@ export default function HbotExopodPage() {
         </div>
       </section>
 
+      {/* Clinic Team with HBOT Chamber */}
+      <section className="border-t border-white/10 bg-neutral-900">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-neutral-950">
+              <Image
+                src="/images/services/hbot-exopod/everyday-hbot-clinic-web.jpg"
+                alt="Clinical team with hardshell HBOT chamber at REAL PT & Wellness"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
+                Our Team & Equipment
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                Medical-Grade Chambers, Expert Staff
+              </h2>
+              <p className="mt-3 text-slate-400">
+                Our trained clinical team operates hardshell hyperbaric chambers in a safe, comfortable environment. Every session is monitored with precision controls, dual safety systems, and real-time oxygen analysis.
+              </p>
+              <ul className="mt-5 space-y-2">
+                {[
+                  "Aviation-grade hardshell construction",
+                  "Dual safety valves & smart door sensors",
+                  "Trained and certified HBOT technicians",
+                  "Up to 2.5 ATA therapeutic pressure",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-slate-300">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" aria-hidden />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* EXOPOD Section — real EXOPOD image + modalities */}
       <section className="border-t border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950">
         <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
