@@ -324,9 +324,17 @@ export default function AquaticTherapyPage() {
         </div>
       </section>
 
-      {/* ───── WHAT TO EXPECT (dark section) ───── */}
-      <section className="relative overflow-hidden bg-neutral-950 py-20 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/30 via-transparent to-transparent" />
+      {/* ───── WHAT TO EXPECT (dark — pool bg) ───── */}
+      <section className="relative overflow-hidden py-20 md:py-24">
+        <Image
+          src="/images/swimex/swimex-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/85 via-neutral-950/75 to-neutral-950/85" />
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
           <div className="text-center">
             <p className="text-sm font-medium uppercase tracking-wider text-cyan-400">
