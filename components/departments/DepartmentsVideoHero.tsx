@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const HERO_VIDEO_SRC = "/videos/services-hero.mp4";
+const HERO_VIDEO_SRC = "/videos/oxygen-bubbles-hero.mp4";
 const BOOKING_HREF = "/book";
 
 function scrollToMemberships() {
