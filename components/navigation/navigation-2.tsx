@@ -242,6 +242,7 @@ export default function Navigation2() {
               <Link href="/memberships" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Pricing</Link>
               <Link href="/partners/operator-equity" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Partners</Link>
               <Link href="/veterans/ans-program" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">Veterans</Link>
+              <Link href="/veterans/ky-hbot" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white transition-colors">KY HBOT for Vets</Link>
             </nav>
 
             {/* Right actions */}
@@ -293,6 +294,7 @@ export default function Navigation2() {
                   <Link href="/memberships" className="block rounded-2xl border border-neutral-800/60 bg-neutral-900/30 px-4 py-3 text-sm font-medium text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
                   <Link href="/partners/operator-equity" className="block rounded-2xl border border-neutral-800/60 bg-neutral-900/30 px-4 py-3 text-sm font-medium text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Partners</Link>
                   <Link href="/veterans/ans-program" className="block rounded-2xl border border-neutral-800/60 bg-neutral-900/30 px-4 py-3 text-sm font-medium text-neutral-200" onClick={() => setMobileMenuOpen(false)}>Veterans</Link>
+                  <Link href="/veterans/ky-hbot" className="block rounded-2xl border border-neutral-800/60 bg-neutral-900/30 px-4 py-3 text-sm font-medium text-neutral-200" onClick={() => setMobileMenuOpen(false)}>KY HBOT for Vets</Link>
 
                   {/* Services expandable — shows all 5 categories */}
                   <div className="rounded-2xl border border-neutral-800/60 bg-neutral-900/30 overflow-hidden">
