@@ -13,6 +13,14 @@ import {
   LampDesk,
   Sparkles,
   Activity,
+  Tv,
+  AirVent,
+  Armchair,
+  ShieldCheck,
+  Gauge,
+  GraduationCap,
+  Wrench,
+  HeartPulse,
   type LucideIcon,
 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
@@ -23,7 +31,7 @@ import { REALPT } from "@/lib/realpt";
 export const metadata: Metadata = {
   title: "HBOT + EXOPOD Memberships | REAL PT & Wellness",
   description:
-    "Hyperbaric oxygen therapy and EXOPOD stacked recovery modalities. Greater Conduit of Healing 2.0 ATA chamber; memberships designed to support performance, recovery, and wellness.",
+    "Hyperbaric oxygen therapy and EXOPOD stacked recovery modalities. Medical-grade hardshell chambers and memberships designed to support performance, recovery, and wellness.",
   openGraph: {
     title: "HBOT + EXOPOD Memberships | REAL PT & Wellness",
     description:
@@ -66,39 +74,83 @@ const GETTING_STARTED = [
   "Customize plan with staff",
 ];
 
+const HBOT_CHAMBERS = [
+  {
+    name: "Sitting Hardshell Chamber",
+    spec: "2.0 ATA · Upright Design",
+    image: "/images/services/hbot-exopod/everyday-hbot-orb-room.jpg",
+    alt: "REAL PT & Wellness 2.0 ATA sitting hardshell HBOT chamber in a modern clinical room",
+  },
+  {
+    name: "Laydown Hardshell Chamber",
+    spec: "2.5 ATA · Full Recline",
+    image: "/images/services/hbot-exopod/everyday-hbot-conduit25-new.jpg",
+    alt: "REAL PT & Wellness 2.5 ATA laydown hardshell hyperbaric oxygen chamber",
+  },
+  {
+    name: "Hardshell Chamber Detail",
+    spec: "Aviation-Grade · Precision Build",
+    image: "/images/services/hbot-exopod/everyday-hbot-side.jpg",
+    alt: "REAL PT & Wellness hardshell HBOT chamber close-up side view showing aviation-grade construction",
+  },
+];
+
+const HBOT_ADDONS: { label: string; desc: string; icon: LucideIcon }[] = [
+  { label: "Entertainment System", desc: "In-chamber TV with Roku streaming and Bluetooth Bose speaker", icon: Tv },
+  { label: "Gaming Setup", desc: "PS5 / Xbox compatible console system with rolling TV stand", icon: Tv },
+  { label: "Red Light Therapy Panel", desc: "Simultaneous red + near-infrared light therapy during your HBOT session", icon: Sun },
+  { label: "Tabletop Red Light", desc: "Compact red light therapy unit for targeted treatment", icon: Lightbulb },
+  { label: "Climate Control Upgrade", desc: "Enhanced air conditioning for optimal comfort during longer sessions", icon: AirVent },
+  { label: "Luxury Power Recliner", desc: "Motorized leather recliner chair for maximum session comfort", icon: Armchair },
+  { label: "High-Flow BIBS Mask", desc: "20 LPM built-in breathing system for concentrated oxygen delivery", icon: Wind },
+  { label: "Dual Oxygen Concentrator", desc: "Upgraded dual-flow oxygen delivery for enhanced performance", icon: Gauge },
+  { label: "Grounding Blanket & Sheet", desc: "Therapeutic grounding therapy integrated into your HBOT session", icon: HeartPulse },
+  { label: "Oxygen Analyzer", desc: "Real-time oxygen level monitoring inside the chamber", icon: Activity },
+];
+
+const HBOT_SERVICES: { label: string; desc: string; icon: LucideIcon }[] = [
+  { label: "Professional Training & Certification", desc: "IHA & IBUM certified clinical staff training and home-user safety courses", icon: GraduationCap },
+  { label: "White Glove Installation", desc: "Full delivery, placement, setup, and packaging removal", icon: ShieldCheck },
+  { label: "Maintenance & Diagnostics", desc: "Scheduled maintenance, repair, and remote support for all equipment", icon: Wrench },
+  { label: "Virtual Consultation", desc: "Remote training and support sessions for home or clinical users", icon: Tv },
+];
+
 export default function HbotExopodPage() {
   return (
-    <div className="brand-page min-h-screen overflow-x-hidden">
-      {/* Hero — futuristic neon wellness pods */}
+    <div className="brand-page min-h-screen overflow-x-hidden bg-neutral-950">
+      {/* Hero — HBOT chamber in room setting */}
       <section className="relative flex min-h-[70vh] flex-col overflow-hidden pt-20 sm:min-h-[80vh] md:min-h-[100svh]">
-        <div className="absolute inset-0 z-0 bg-neutral-900">
+        <div className="absolute inset-0 z-0 bg-neutral-950">
           <Image
-            src="/images/services/hbot-exopod/hbot-neon-pods.jpg"
-            alt="Futuristic hyperbaric wellness pods with neon lighting"
+            src="/images/services/hbot-exopod/everyday-hbot-orb-room.jpg"
+            alt="REAL PT & Wellness hardshell HBOT chamber in a modern clinical room"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-70"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/80" />
         </div>
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:py-28 md:items-start md:px-12 md:py-32 md:text-left lg:px-16 xl:px-24">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-cyan-400">
+            REAL PT & Wellness
+          </p>
           <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Hyperbaric Oxygen Therapy (HBOT) + EXOPOD™ Memberships
+            HBOT + EXOPOD™ Memberships
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-100/90 sm:mt-6 sm:text-xl">
+          <p className="mt-4 max-w-2xl text-lg text-slate-300 sm:mt-6 sm:text-xl">
             Stacked recovery modalities designed to support performance, recovery, and wellness.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:mt-10 md:justify-start">
             <Link
               href={REALPT.schedulingUrl}
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-neutral-900 shadow-lg transition-all hover:bg-white/95 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-cyan-500/25 transition-all hover:bg-cyan-400 hover:scale-[1.02]"
             >
               Book HBOT Session
             </Link>
             <Link
               href="#membership-tiers"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/15"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-white/30 bg-white/5 px-6 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/15 hover:border-white/50"
             >
               Start EXOPOD Membership
             </Link>
@@ -106,34 +158,61 @@ export default function HbotExopodPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-muted/30">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      {/* HBOT Overview + Chamber Gallery */}
+      <section className="border-t border-white/10 bg-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             HBOT Overview
           </h2>
-          <p className="mt-2 max-w-2xl text-muted-foreground">
-            Hyperbaric oxygen therapy uses a pressurized oxygen environment—our Greater Conduit of Healing 2.0 ATA chamber—commonly used to support recovery and wellness. You breathe higher concentrations of oxygen in a controlled, safe setting.
+          <p className="mt-3 max-w-3xl text-slate-400">
+            Hyperbaric oxygen therapy uses a pressurized oxygen environment—our medical-grade hardshell chambers—commonly used to support recovery and wellness. You breathe higher concentrations of oxygen in a controlled, safe setting.
           </p>
-          <div className="mt-8 overflow-hidden rounded-xl border border-border bg-background">
-            <h3 className="border-b border-border px-4 py-3 font-semibold text-foreground sm:px-6">
+
+          {/* Chamber Showcase — 3 images */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {HBOT_CHAMBERS.map((chamber) => (
+              <div
+                key={chamber.name}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900"
+              >
+                <div className="relative aspect-square overflow-hidden">
+                  <Image
+                    src={chamber.image}
+                    alt={chamber.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="px-4 py-3">
+                  <p className="font-semibold text-white text-sm">{chamber.name}</p>
+                  <p className="text-xs text-cyan-400/80">{chamber.spec}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* HBOT Pricing Table */}
+          <div className="mt-10 overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
+            <h3 className="border-b border-white/10 px-4 py-3 font-semibold text-white sm:px-6">
               HBOT Pricing
             </h3>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-border bg-muted/50">
-                    <th className="px-4 py-3 font-medium text-foreground sm:px-6">Option</th>
-                    <th className="px-4 py-3 font-medium text-foreground sm:px-6">Duration</th>
-                    <th className="px-4 py-3 font-medium text-foreground sm:px-6">Price</th>
+                  <tr className="border-b border-white/10 bg-white/5">
+                    <th className="px-4 py-3 font-medium text-slate-300 sm:px-6">Option</th>
+                    <th className="px-4 py-3 font-medium text-slate-300 sm:px-6">Duration</th>
+                    <th className="px-4 py-3 font-medium text-slate-300 sm:px-6">Price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr className="border-b border-border">
+                <tbody className="text-slate-400">
+                  <tr className="border-b border-white/10">
                     <td className="px-4 py-3 sm:px-6">Single session</td>
                     <td className="px-4 py-3 sm:px-6">30 min</td>
                     <td className="px-4 py-3 sm:px-6">TBD</td>
                   </tr>
-                  <tr className="border-b border-border">
+                  <tr className="border-b border-white/10">
                     <td className="px-4 py-3 sm:px-6">Single session</td>
                     <td className="px-4 py-3 sm:px-6">60 min</td>
                     <td className="px-4 py-3 sm:px-6">TBD</td>
@@ -146,41 +225,45 @@ export default function HbotExopodPage() {
                 </tbody>
               </table>
             </div>
-            <p className="px-4 py-2 text-xs text-muted-foreground sm:px-6">
+            <p className="px-4 py-2 text-xs text-slate-500 sm:px-6">
               Contact us for current single-session and package pricing.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
+      {/* EXOPOD Section — real EXOPOD image + modalities */}
+      <section className="border-t border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted order-2 lg:order-1">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 order-2 lg:order-1">
               <Image
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80"
-                alt="Recovery and wellness environment—HBOT and EXOPOD at REAL PT & Wellness."
+                src="/images/services/hbot-exopod/exopod-therapy.png"
+                alt="EXOPOD recovery wellness pod with blue light therapy and infrared — stacked modalities in one session"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
+                Multi-Modality Recovery
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                 EXOPOD: Stacked Modalities in One Session
               </h2>
-              <p className="mt-2 max-w-2xl text-muted-foreground">
+              <p className="mt-3 max-w-2xl text-slate-400">
                 EXOPOD combines multiple recovery and wellness modalities in one session and membership—so you can get consistent, structured access to technologies designed to support how you feel and perform.
               </p>
             </div>
           </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {EXOPOD_MODALITIES.map(({ label, icon: Icon }) => (
               <div
                 key={label}
-                className="flex items-start gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground"
+                className="flex items-start gap-3 rounded-xl border border-white/10 bg-neutral-900/80 px-4 py-3 text-sm text-slate-300"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
                   <Icon className="h-4 w-4" aria-hidden />
                 </span>
                 {label}
@@ -190,18 +273,19 @@ export default function HbotExopodPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-muted/30">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      {/* EXOPOD Benefits */}
+      <section className="border-t border-white/10 bg-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             EXOPOD Benefits
           </h2>
-          <p className="mt-2 max-w-2xl text-muted-foreground">
+          <p className="mt-3 max-w-2xl text-slate-400">
             Many members use EXOPOD to support these areas. Outcomes vary; we focus on consistent access and a clear protocol.
           </p>
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {EXOPOD_BENEFITS.map((benefit) => (
-              <li key={benefit} className="flex items-start gap-2 text-muted-foreground">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+              <li key={benefit} className="flex items-start gap-3 text-slate-300">
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-cyan-400" aria-hidden />
                 {benefit}
               </li>
             ))}
@@ -209,84 +293,129 @@ export default function HbotExopodPage() {
         </div>
       </section>
 
-      <section id="membership-tiers" className="scroll-mt-6 border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      {/* Membership Tiers */}
+      <section id="membership-tiers" className="scroll-mt-6 border-t border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             EXOPOD Membership Tiers
           </h2>
-          {/* TODO: Replace with actual tier pricing when available from config/CMS. */}
-          <p className="mt-2 max-w-2xl text-muted-foreground">
+          <p className="mt-3 max-w-2xl text-slate-400">
             Choose the level that matches your goals. Exact pricing and session counts available when you book.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {TIERS.map((tier) => (
-              <Card key={tier.name}>
-                <CardHeader>
-                  <CardTitle className="text-xl">{tier.name}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{tier.summary}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg font-semibold text-foreground">Starting at {tier.price}/mo</p>
-                  <Button asChild className="mt-4 w-full">
-                    <Link href={REALPT.schedulingUrl}>Get Started</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div
+                key={tier.name}
+                className="rounded-2xl border border-white/10 bg-neutral-900 p-6 transition-colors hover:border-cyan-500/30"
+              >
+                <h3 className="text-xl font-semibold text-white">{tier.name}</h3>
+                <p className="mt-1 text-sm text-slate-400">{tier.summary}</p>
+                <p className="mt-4 text-lg font-semibold text-cyan-400">Starting at {tier.price}/mo</p>
+                <Link
+                  href={REALPT.schedulingUrl}
+                  className="mt-4 block w-full rounded-xl bg-cyan-500/10 py-2.5 text-center text-sm font-semibold text-cyan-400 transition-colors hover:bg-cyan-500/20"
+                >
+                  Get Started
+                </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border bg-muted/30">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      {/* Getting Started */}
+      <section className="border-t border-white/10 bg-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             Getting Started
           </h2>
-          <ol className="mt-6 list-decimal space-y-4 pl-5 text-muted-foreground">
-            {GETTING_STARTED.map((step) => (
-              <li key={step} className="pl-2">{step}</li>
-            ))}
-          </ol>
-          <Button asChild className="mt-6">
-            <Link href={REALPT.schedulingUrl}>Book Your First Visit</Link>
-          </Button>
-        </div>
-      </section>
-
-      <section className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Add-On Experience: Gaming TV System
-          </h2>
-          <p className="mt-2 max-w-2xl text-muted-foreground">
-            Make your session even more enjoyable with our optional mobile TV setup.
-          </p>
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-            {[
-              "Mobile rolling TV",
-              "Adjustable stand",
-              "Console shelf",
-              "Roku OS",
-              "Wi-Fi enabled",
-              "Up to 12 hours battery",
-              "Optional Bose SoundLink Flex",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-2 text-muted-foreground">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                {item}
+          <ol className="mt-6 space-y-4">
+            {GETTING_STARTED.map((step, i) => (
+              <li key={step} className="flex items-center gap-4 text-slate-300">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-500/10 text-sm font-bold text-cyan-400">
+                  {i + 1}
+                </span>
+                {step}
               </li>
             ))}
-          </ul>
+          </ol>
+          <Link
+            href={REALPT.schedulingUrl}
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/25 transition-all hover:bg-cyan-400"
+          >
+            Book Your First Visit
+          </Link>
         </div>
       </section>
 
-      <section className="border-b border-border bg-primary/10">
+      {/* HBOT Session Add-Ons */}
+      <section className="border-t border-white/10 bg-neutral-900">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
+            Enhance Your Experience
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            HBOT Session Add-Ons
+          </h2>
+          <p className="mt-3 max-w-2xl text-slate-400">
+            Customize every session with premium upgrades—entertainment, comfort, and advanced therapy options available at our facility.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {HBOT_ADDONS.map(({ label, desc, icon: Icon }) => (
+              <div
+                key={label}
+                className="rounded-xl border border-white/10 bg-neutral-950/60 p-4 transition-colors hover:border-cyan-500/20"
+              >
+                <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <p className="font-semibold text-white text-sm">{label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Support & Training Services */}
+      <section className="border-t border-white/10 bg-neutral-950">
+        <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">
+            Full-Service Support
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Training & Service Options
+          </h2>
+          <p className="mt-3 max-w-2xl text-slate-400">
+            Whether you&apos;re a clinical team, home user, or facility manager—we provide expert setup, training, maintenance, and ongoing support.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {HBOT_SERVICES.map(({ label, desc, icon: Icon }) => (
+              <div
+                key={label}
+                className="flex items-start gap-4 rounded-xl border border-white/10 bg-neutral-900 p-5 transition-colors hover:border-cyan-500/20"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <p className="font-semibold text-white text-sm">{label}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-slate-500">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Bar */}
+      <section className="border-t border-white/10 bg-cyan-500/10">
         <div className="container mx-auto px-4 py-8 sm:px-6">
           <div className="flex flex-wrap items-center justify-center gap-4 text-center">
-            <span className="font-semibold text-foreground">{REALPT.siteName}</span>
+            <span className="font-semibold text-white">{REALPT.siteName}</span>
             <a
               href={`tel:${REALPT.phone}`}
-              className="text-lg font-semibold text-primary underline-offset-4 hover:underline"
+              className="text-lg font-semibold text-cyan-400 underline-offset-4 hover:underline"
               aria-label={`Call ${REALPT.displayPhone}`}
             >
               {REALPT.displayPhone}
