@@ -64,7 +64,7 @@ export function KeyPartners() {
   const items = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section className="overflow-hidden bg-neutral-950 pb-6 pt-12 md:pt-16">
+    <section className="overflow-hidden bg-neutral-950 pt-12 md:pt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-center font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           Key Partners

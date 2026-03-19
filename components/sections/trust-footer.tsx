@@ -23,7 +23,7 @@ export function TrustFooter() {
   const [liveChatOpen, setLiveChatOpen] = useState(false);
 
   return (
-    <footer className="border-t border-white/10 bg-neutral-900">
+    <footer className="bg-neutral-950">
       <div className="container mx-auto px-4 py-10 md:py-12">
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
           {TRUST_BADGES.map((label) => (

@@ -68,7 +68,7 @@ const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-neutral-950">
+    <footer className="bg-neutral-950 border-t border-white/[0.06]">
       <div className="container mx-auto px-4 py-10 sm:px-6 sm:py-12 md:py-16">
         <div className="mb-8">
           <BrandMark wordmarkClassName="text-white" />
