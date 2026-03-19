@@ -21,11 +21,11 @@ export function HeroSection() {
           aria-hidden
         >
           <source
-            src="/videos/kentucky-sunset-hero.mp4"
+            src="/videos/memberships-hero.mp4"
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40" />
       </div>
 
       {/* Content block */}
