@@ -9,8 +9,8 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden text-foreground">
       <HeroSection />
       <KeyPartners />
-      <ExploreFeaturesSection />
       <TrustFooter />
+      <ExploreFeaturesSection />
       <Footer />
     </div>
   );

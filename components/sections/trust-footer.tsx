@@ -23,8 +23,8 @@ export function TrustFooter() {
   const [liveChatOpen, setLiveChatOpen] = useState(false);
 
   return (
-    <footer className="bg-gradient-to-b from-white to-slate-50">
-      <div className="container mx-auto px-4 py-10 md:py-12">
+    <section className="bg-white">
+      <div className="container mx-auto px-4 py-8 md:py-10">
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
           {TRUST_BADGES.map((label) => (
             <div
@@ -39,7 +39,7 @@ export function TrustFooter() {
           ))}
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <Button
             size="lg"
             variant="outline"
@@ -51,7 +51,7 @@ export function TrustFooter() {
           </Button>
         </div>
 
-        <p className="mt-8 text-center text-sm text-slate-500 max-w-2xl mx-auto">
+        <p className="mt-5 text-center text-sm text-slate-500 max-w-2xl mx-auto">
           We bill Medicare Part B, major PPO plans, and provide superbills for
           HSA/FSA reimbursement.
         </p>
@@ -74,6 +74,6 @@ export function TrustFooter() {
           </div>
         </DialogContent>
       </Dialog>
-    </footer>
+    </section>
   );
 }
