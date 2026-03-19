@@ -22,7 +22,7 @@ const PARTNERS = [
     url: "/services/exoskin",
   },
   {
-    name: "Cost Plus Drugs",
+    name: "REAL Cost Plus",
     description: "Transparent Medication Pricing",
     image: "/images/partners/costplus.jpg",
     url: "/cost-plus-rx",
