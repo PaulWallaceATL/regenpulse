@@ -14,22 +14,22 @@ const SERVICES_MEGA = [
   {
     category: "Clinical Services",
     items: [
-      { label: "Medicare Home Health PT & OT", href: "/" },
-      { label: "In-Clinic Physical Therapy", href: "/" },
-      { label: "Y-Strap Chiropractic & Manual Therapy", href: "/" },
-      { label: "Occupational Therapy", href: "/" },
-      { label: "Speech Therapy", href: "/" },
+      { label: "Medicare Home Health PT & OT", href: "/services/medicare-home-health" },
+      { label: "In-Clinic Physical Therapy", href: "/services/in-clinic-pt" },
+      { label: "Y-Strap Chiropractic & Manual Therapy", href: "/services/chiropractic" },
+      { label: "Occupational Therapy", href: "/services/occupational-therapy" },
+      { label: "Symmetry Neuro Therapy", href: "/services/symmetry-neuro-therapy" },
     ],
   },
   {
     category: "Wellness & Recovery Technology",
     items: [
       { label: "Hyperbaric Oxygen Therapy (HBOT)", href: "/services/hbot-exopod" },
-      { label: "Red Light Therapy", href: "/" },
-      { label: "PEMF", href: "/" },
-      { label: "Compression Therapy", href: "/" },
-      { label: "Cryotherapy", href: "/" },
-      { label: "Neuro Training & Cognitive Rehab", href: "/" },
+      { label: "Red Light Therapy", href: "/services/red-light-therapy" },
+      { label: "PEMF", href: "/services/pemf" },
+      { label: "Compression Therapy", href: "/services/compression-therapy" },
+      { label: "Cryotherapy", href: "/services/cryotherapy" },
+      { label: "Neuro Training & Cognitive Rehab", href: "/services/neuro-training" },
       { label: "ExoSkin Thermal Shock", href: "/services/exoskin" },
       { label: "SwimEx Aquatic Therapy", href: "/services/aquatic-therapy" },
       { label: "ANS Intelligence Testing", href: "/veterans/ans-program" },
@@ -38,33 +38,33 @@ const SERVICES_MEGA = [
   {
     category: "Regenerative & Injection Services",
     items: [
-      { label: "Joint Injections", href: "/" },
-      { label: "Trigger Point Injections", href: "/" },
-      { label: "IV Therapy", href: "/" },
-      { label: "B12 & Peptide Programs", href: "/" },
-      { label: "GLP-1 Weight Loss Programs", href: "/" },
+      { label: "Joint Injections", href: "/services/joint-injections" },
+      { label: "Trigger Point Injections", href: "/services/trigger-point-injections" },
+      { label: "IV Therapy", href: "/services/iv-therapy" },
+      { label: "B12 & Peptide Programs", href: "/services/b12-peptides" },
+      { label: "GLP-1 Weight Loss Programs", href: "/services/glp1-weight-loss" },
     ],
   },
   {
     category: "Retail & Consumer Products",
     items: [
-      { label: "REAL Fresh Nutrition", href: "/" },
-      { label: "Branded Apparel & Gear", href: "/" },
-      { label: "Recovery Tools", href: "/" },
-      { label: "Wearable Hardware", href: "/" },
-      { label: "Wearable Subscriptions", href: "/" },
+      { label: "REAL Fresh Nutrition", href: "/services/real-fresh-nutrition" },
+      { label: "Branded Apparel & Gear", href: "/services/apparel" },
+      { label: "Recovery Tools", href: "/services/recovery-tools" },
+      { label: "Wearable Hardware", href: "/services/wearable-hardware" },
+      { label: "Wearable Subscriptions", href: "/services/wearable-subscriptions" },
     ],
   },
   {
     category: "Digital & Community",
     items: [
-      { label: "CLINIX Megabilling SaaS", href: "/" },
-      { label: "Device Leasing & E-Commerce", href: "/" },
-      { label: "Mobile Events", href: "/" },
-      { label: "Partner Commissions", href: "/" },
-      { label: "Corporate Telehealth", href: "/" },
-      { label: "REAL TV Social Media Content", href: "/" },
-      { label: "Member Community Platform", href: "/" },
+      { label: "CLINIX Megabilling SaaS", href: "/services/clinix-saas" },
+      { label: "Device Leasing & E-Commerce", href: "/services/device-leasing" },
+      { label: "Mobile Events", href: "/services/mobile-events" },
+      { label: "Partner Commissions", href: "/services/partner-commissions" },
+      { label: "Corporate Telehealth", href: "/services/corporate-telehealth" },
+      { label: "REAL TV Social Media Content", href: "/services/real-tv" },
+      { label: "Member Community Platform", href: "/services/member-community" },
     ],
   },
 ] as const;
@@ -162,25 +162,17 @@ export default function Navigation2() {
                                 {col.category}
                               </h3>
                               <ul className="space-y-1">
-                                {col.items.map((item) => {
-                                  const hasPage = item.href !== "/";
-                                  return (
+                                {col.items.map((item) => (
                                     <li key={item.label}>
                                       <Link
                                         href={item.href}
                                         onClick={() => setServicesOpen(false)}
-                                        className={cn(
-                                          "block rounded-lg px-2.5 py-2 text-[13px] leading-snug transition-colors",
-                                          hasPage
-                                            ? "text-cyan-400 hover:bg-white/5 hover:text-cyan-300"
-                                            : "text-neutral-400 hover:bg-white/5 hover:text-neutral-200"
-                                        )}
+                                        className="block rounded-lg px-2.5 py-2 text-[13px] leading-snug transition-colors text-cyan-400 hover:bg-white/5 hover:text-cyan-300"
                                       >
                                         {item.label}
                                       </Link>
                                     </li>
-                                  );
-                                })}
+                                  ))}
                               </ul>
                             </div>
                           ))}
@@ -323,24 +315,16 @@ export default function Navigation2() {
                                   {col.category}
                                 </h4>
                                 <div className="space-y-0.5">
-                                  {col.items.map((item) => {
-                                    const hasPage = item.href !== "/";
-                                    return (
+                                  {col.items.map((item) => (
                                       <Link
                                         key={item.label}
                                         href={item.href}
-                                        className={cn(
-                                          "block rounded-lg px-2.5 py-2 text-[13px] leading-snug transition-colors",
-                                          hasPage
-                                            ? "text-cyan-400 hover:bg-white/5"
-                                            : "text-neutral-400 hover:bg-white/5"
-                                        )}
+                                        className="block rounded-lg px-2.5 py-2 text-[13px] leading-snug transition-colors text-cyan-400 hover:bg-white/5"
                                         onClick={() => { setMobileMenuOpen(false); setMobileServicesOpen(false); }}
                                       >
                                         {item.label}
                                       </Link>
-                                    );
-                                  })}
+                                  ))}
                                 </div>
                               </div>
                             ))}
