@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Occupational Therapy",
+  secondaryImage: "/images/services/occupational-therapy-2.jpg",
   heroImage: "/images/services/occupational-therapy.jpg",
   subtitle: "Restoring independence through functional rehabilitation and adaptive strategies.",
   overview: {

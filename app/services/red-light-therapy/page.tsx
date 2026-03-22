@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Red Light Therapy",
+  secondaryImage: "/images/services/red-light-therapy-2.jpg",
   heroImage: "/images/services/red-light-therapy.jpg",
   subtitle: "Full-body photobiomodulation with clinical-grade panels at 660nm + 850nm wavelengths.",
   overview: {

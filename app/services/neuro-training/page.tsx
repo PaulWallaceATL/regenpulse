@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Neuro Training & Cognitive Rehab",
+  secondaryImage: "/images/services/neuro-training-2.jpg",
   heroImage: "/images/services/neuro-training.jpg",
   subtitle: "Brainwave training, neurofeedback, and cognitive rehabilitation for peak mental performance.",
   overview: {

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Compression Therapy",
+  secondaryImage: "/images/services/compression-therapy-2.jpg",
   heroImage: "/images/services/compression-therapy.jpg",
   subtitle: "Pneumatic compression for lymphatic drainage, recovery, and circulation.",
   overview: {

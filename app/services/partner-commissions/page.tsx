@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Partner Commissions",
+  secondaryImage: "/images/services/partner-commissions-2.jpg",
   heroImage: "/images/services/partner-commissions.jpg",
   subtitle: "Earn commissions by referring clinics, facilities, and providers to the REAL PT ecosystem.",
   overview: {

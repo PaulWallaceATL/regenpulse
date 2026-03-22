@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "IV Therapy",
+  secondaryImage: "/images/services/iv-therapy-2.jpg",
   heroImage: "/images/services/iv-therapy.jpeg",
   subtitle: "Medical-grade IV vitamin infusions for hydration, immunity, energy, and recovery.",
   overview: {

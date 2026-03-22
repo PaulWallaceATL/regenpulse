@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "PEMF Therapy",
+  secondaryImage: "/images/services/pemf-2.jpg",
   heroImage: "/images/services/pemf.webp",
   subtitle: "Pulsed Electromagnetic Field therapy for pain relief, bone healing, and cellular regeneration.",
   overview: {

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Joint Injections",
+  secondaryImage: "/images/services/joint-injections-2.jpg",
   heroImage: "/images/services/joint-injections.jpeg",
   subtitle: "Corticosteroid, hyaluronic acid, and regenerative joint injections for pain relief and mobility.",
   overview: {

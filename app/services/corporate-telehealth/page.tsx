@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Corporate Telehealth",
+  secondaryImage: "/images/services/corporate-telehealth-2.jpeg",
   heroImage: "/images/services/corporate-telehealth.jpg",
   subtitle: "Virtual wellness consultations, telehealth PT, and remote health monitoring for enterprise teams.",
   overview: {

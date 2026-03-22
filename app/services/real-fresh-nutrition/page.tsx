@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "REAL Fresh Nutrition",
+  secondaryImage: "/images/services/real-fresh-nutrition-2.jpg",
   heroImage: "/images/services/real-fresh-nutrition.jpg",
   subtitle: "Clinical-grade smoothies, supplement stacks, and nutrition products from our in-house wellness bar.",
   overview: {

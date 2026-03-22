@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Trigger Point Injections",
+  secondaryImage: "/images/services/trigger-point-injections-2.jpg",
   heroImage: "/images/services/trigger-point-injections.png",
   subtitle: "Targeted injections for muscle knots, myofascial pain, and chronic tension relief.",
   overview: {

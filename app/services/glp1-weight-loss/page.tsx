@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "GLP-1 Weight Loss Programs",
+  secondaryImage: "/images/services/glp1-weight-loss-2.jpg",
   heroImage: "/images/services/glp1-weight-loss.jpg",
   subtitle: "Medical weight management with GLP-1 medications, nutrition guidance, and metabolic support.",
   overview: {

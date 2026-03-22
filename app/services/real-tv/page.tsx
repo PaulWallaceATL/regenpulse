@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "REAL TV Social Media Content",
+  secondaryImage: "/images/services/real-tv-2.png",
   heroImage: "/images/services/real-tv.jpg",
   subtitle: "Live health commerce, expert demos, and wellness content across all platforms.",
   overview: {

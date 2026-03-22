@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const PAGE_DATA: ServicePageData = {
   title: "Wearable Hardware",
+  secondaryImage: "/images/services/wearable-hardware-2.jpg",
   heroImage: "/images/services/wearable-hardware.jpg",
   subtitle: "Health monitoring wearables, diagnostics devices, and connected health technology.",
   overview: {
